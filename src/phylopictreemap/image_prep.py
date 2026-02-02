@@ -8,6 +8,7 @@ from PIL import Image
 import matplotlib
 import matplotlib.pyplot as plt
 
+
 def size_colours(sizes, colormap="viridis"):
     if isinstance(colormap, str):
         colormap = plt.get_cmap(colormap)
@@ -19,10 +20,10 @@ def size_colours(sizes, colormap="viridis"):
 
 def edit_svg_tree(tree, **kwargs):
     root = tree.getroot()
-    for key,value in kwargs.items():
+    for key, value in kwargs.items():
         for elem in root.iter():
-                svg_attr = key.replace("_", "-")
-                elem.set(svg_attr, value)
+            svg_attr = key.replace("_", "-")
+            elem.set(svg_attr, value)
     return tree
 
 
@@ -33,7 +34,7 @@ def svg2png(tree):
     return png
 
 
-def prep_svg(tree:etree._ElementTree, **kwargs):
+def prep_svg(tree: etree._ElementTree, **kwargs):
     tree = edit_svg_tree(tree, **kwargs)
     png = svg2png(tree)
     return png

@@ -1,6 +1,7 @@
 import squarify
 import matplotlib.patches as patches
 
+
 def letterbox_extent(extent, img):
     """
     Compute an extent for imshow that preserves the image's aspect ratio
@@ -45,38 +46,28 @@ def letterbox_extent(extent, img):
         xmin2 = x_center - new_width / 2
         xmax2 = x_center + new_width / 2
         return [xmin2, xmax2, ymin, ymax]
-    
+
+
 def squarify_images(squares, images, ax, letterbox=True, aspect="auto"):
-    for square,image in zip(squares,images):
+    for square, image in zip(squares, images):
         x0 = square.get_x()
         y0 = square.get_y()
         width = square.get_width()
         height = square.get_height()
-        extent=(
-                x0,
-                x0+width,
-                y0,
-                y0+height
-            )
+        extent = (x0, x0 + width, y0, y0 + height)
         if letterbox:
             extent = letterbox_extent(extent, image)
-        ax.imshow(
-            image,
-            extent=extent,
-            aspect=aspect,
-            zorder = square.get_zorder()+1
-        )
+        ax.imshow(image, extent=extent, aspect=aspect, zorder=square.get_zorder() + 1)
 
 
 def pictreemap(sizes, pics, **kwargs):
     squarify_plot = squarify.plot(sizes, **kwargs)
     # Get the rectangle artists we need
     # Assumes the first n Rectangles are the squares, where n is the number of sizes
-    rect_artists = [rect for rect in squarify_plot.get_children() if isinstance(rect, patches.Rectangle)]
-    rect_artists = rect_artists[:len(sizes)]
-    squarify_images(
-        rect_artists,
-        pics,
-        ax=squarify_plot,
-        letterbox=True
-    )
+    rect_artists = [
+        rect
+        for rect in squarify_plot.get_children()
+        if isinstance(rect, patches.Rectangle)
+    ]
+    rect_artists = rect_artists[: len(sizes)]
+    squarify_images(rect_artists, pics, ax=squarify_plot, letterbox=True)
