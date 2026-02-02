@@ -6,8 +6,19 @@ from io import BytesIO
 import cairosvg
 import io
 from PIL import Image
+import matplotlib
+import matplotlib.pyplot as plt
 
-def fill_svg_tree(tree, colour):
+def size_colours(sizes, colormap="viridis"):
+    if isinstance(colormap, str):
+        colormap = plt.get_cmap(colormap)
+    norm = matplotlib.colors.Normalize()
+    colours = colormap(norm(sizes))
+    hexcolours = [matplotlib.colors.to_hex(c) for c in colours]
+    return hexcolours
+
+
+def edit_svg_tree(tree, **kwargs):
     root = tree.getroot()
     for elem in root.iter():
         if "fill" in elem.attrib:
