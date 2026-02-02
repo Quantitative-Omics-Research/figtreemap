@@ -1,7 +1,6 @@
 import requests
 from lxml import etree
 import numpy as np
-import matplotlib.pyplot as plt
 from io import BytesIO
 import cairosvg
 import io
@@ -20,9 +19,10 @@ def size_colours(sizes, colormap="viridis"):
 
 def edit_svg_tree(tree, **kwargs):
     root = tree.getroot()
-    for elem in root.iter():
-        if "fill" in elem.attrib:
-            elem.attrib["fill"] = colour
+    for key,value in kwargs.items():
+        for elem in root.iter():
+                svg_attr = key.replace("_", "-")
+                elem.set(svg_attr, value)
     return tree
 
 
@@ -32,9 +32,8 @@ def svg2png(tree):
     png = Image.open(io.BytesIO(png_bytes))
     return png
 
-# tree:etree._ElementTree, colour=None:str
-def prep_svg(tree:etree._ElementTree, colour:str=None):
-    if colour:
-        tree = fill_svg_tree(tree, colour)
+
+def prep_svg(tree:etree._ElementTree, **kwargs):
+    tree = edit_svg_tree(tree, **kwargs)
     png = svg2png(tree)
     return png
