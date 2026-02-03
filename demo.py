@@ -1,10 +1,6 @@
-
 import pandas as pd
 import matplotlib.pyplot as plt
-
-import figtreemap.phylopics as phylopics
-import figtreemap.image_prep as image_prep
-import figtreemap.squarify_images as squarify_images
+import figtreemap
 
 mammal_size = pd.DataFrame(
     [
@@ -17,20 +13,20 @@ mammal_size = pd.DataFrame(
     ],
     columns = [ "species", "latin", "gestation_days", "adult_mass_kg",]
 )
-# mammal_size = mammal_size.sort_values("adult_mass_kg")
+
 # would map be faster?
 sizes = mammal_size.adult_mass_kg
 names = mammal_size.latin
 
-svgs = [phylopics.get_svg(name) for name in names]
-hexcolours = image_prep.size_colours(sizes)
-imgs = [image_prep.prep_svg(svg, fill=colour, stroke="black", stroke_width="300") for svg,colour in zip(svgs, hexcolours)]
 
-squarify_images.figtreemap(
+svgs = [figtreemap.phylopics.get_svg(name) for name in names]
+hexcolours = figtreemap.image_prep.size_colours(sizes)
+imgs = [figtreemap.image_prep.prep_svg(svg, fill=colour, stroke="black", stroke_width="300") for svg,colour in zip(svgs, hexcolours)]
+
+figtreemap.squarify_images.figtreemap(
     sizes,
     imgs,
     facecolor="white",
-    edgecolor=hexcolours,
-    label=sizes
+    edgecolor=hexcolours
 )
 plt.show()
