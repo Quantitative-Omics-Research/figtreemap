@@ -9,13 +9,6 @@ API_BASE = "https://api.phylopic.org"
 HEADERS = {"Accept": "application/vnd.phylopic.v2+json"}
 
 
-def get_lineage_ott_ids(ott_id: int | str) -> list[int]:
-    record = OT.taxon_info(ott_id, include_lineage=True)
-    lineage = record.response_dict.get("lineage")
-    lineage_ott_ids = [ancestor.get("ott_id") for ancestor in lineage]
-    return lineage_ott_ids
-
-
 def get_phylopics_build_number():
     """Get the current PhyloPic build number (required for subsequent queries)."""
     resp = requests.get(API_BASE, headers=HEADERS)
@@ -27,7 +20,30 @@ def get_phylopics_build_number():
 build = get_phylopics_build_number()
 
 
+def get_lineage_ott_ids(ott_id: int | str) -> list[int]:
+    """Get open tree taxonomy IDs for lineage
+
+    Args:
+        ott_id (int | str): An open tree taxonomy ID
+
+    Returns:
+        list[int]: List of taxon IDs for given ID, most to least specific
+    """
+    record = OT.taxon_info(ott_id, include_lineage=True)
+    lineage = record.response_dict.get("lineage")
+    lineage_ott_ids = [ancestor.get("ott_id") for ancestor in lineage]
+    return lineage_ott_ids
+
+
 def get_phylopic_svg_url_from_ott_ids(ott_ids: list[int]) -> str:
+    """Get primary SVG URL for first open tree taxonomy ID with available image
+
+    Args:
+        ott_ids (list[int]): List of open tree taxonomy IDs from most to least specific
+
+    Returns:
+        str: Most specific available SVG URL
+    """
     ott_ids_string = ",".join([str(id) for id in ott_ids])
     response = requests.get(
         API_BASE
@@ -44,6 +60,16 @@ def get_phylopic_svg_url_from_ott_ids(ott_ids: list[int]) -> str:
 
 
 def get_svg(name: str):
+    """Get a phylopic SVG based on a scientific name
+
+    If no image is available, an image of the most specific available taxon will be returned
+
+    Args:
+        name (str): Scientific name from open tree taxonomy
+
+    Returns:
+        lxml.etree._ElementTree: lxml tree of SVG image
+    """
     # Get open tree taxonomy id for name
     ott_id = OT.get_ottid_from_name(name)
     # Get lineage ids in case species not available
