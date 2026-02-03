@@ -1,6 +1,7 @@
 """Get most specific phylopic svg url based on open tree taxonomy name and lineage"""
 
 import requests
+from ratelimit import limits, sleep_and_retry 
 from opentree import OT
 from io import BytesIO
 from lxml import etree
@@ -58,7 +59,8 @@ def get_phylopic_svg_url_from_ott_ids(ott_ids: list[int]) -> str:
     svg_url = image_response.json().get("_links").get("vectorFile").get("href")
     return svg_url
 
-
+@sleep_and_retry 
+@limits(calls=5, period=1) # max 5 calls per second
 def get_svg(name: str):
     """Get a phylopic SVG based on a scientific name
 
