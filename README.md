@@ -1,18 +1,19 @@
-# Phylopic Tree Map
+# figtreemap
+Plot tree maps with figures
 
-Tree maps plot hierarchical data as rectangles where area is proportional
-to its value. Overlay squares of a tree map with phylopics to better visualise
-taxonomic data in treemaps.
+Create tree maps with images proportional to the rectangles. This package focuses on getting and colouring [phylopic](https://www.phylopic.org/) SVGs but any PNG will work too.
 
-[x] Example tree map
-[x] Example phylopic plot
-[] phylopic api interface
-[x] extract location data for squares
-[x] extract size location from phylopics
-[x] determin size and location of phylopic
-[x] plot phylopic tree map
+# 🛠️ Installation
 
-- Load an svg image
-- recolour it
-- convert it to png
-- add to plot using im.show (annotationBbox controls postion only not dimensions)
+# 🚀 Quick start
+
+# ✨ Features
+
+# 📄 Docs
+
+# 🐛 Troubleshooting
+
+# 🤝 Contributing
+
+# ⚖️ Licence
+
