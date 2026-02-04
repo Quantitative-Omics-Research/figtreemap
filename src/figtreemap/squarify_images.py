@@ -68,8 +68,11 @@ def squarify_images(squares, images, ax, letterbox=True, aspect="auto"):
             extent = letterbox_extent(extent, image)
         ax.imshow(image, extent=extent, aspect=aspect, zorder=square.get_zorder() + 1)
 
+def _sort_relative_to_x(x, y):
+    sorted_y = sorted(zip(x, y), key= lambda xy: xy[0], reverse=True)
+    return sorted_y
 
-def figtreemap(sizes, images, letterbox=True, aspect="auto", **kwargs):
+def figtreemap(sizes, images, letterbox=True, aspect="auto", sort=True, **kwargs):
     """Plot treemap with figures in it.
 
     Uses `squarify.plot()` to create a tree map then adds images to the rectangles
@@ -77,13 +80,27 @@ def figtreemap(sizes, images, letterbox=True, aspect="auto", **kwargs):
     first size goes with the first image etc.
 
     Args:
-        sizes (list[float]): An iterable of numbers to convert to colours
+        sizes (list[float]): An iterable of numbers to convert to colours.
         images (list[PIL.PngImagePlugin.PngImageFile]): List of PNG images.
         letterbox (bool, optional): Should the image aspect ratio be preserved? Defaults to True.
+        sort (bool, optional): Should the images (and other attributes) be sorted by sizes? Improves squareness. Defaults to True.
         aspect (str, optional): `aspect` argument passed to `imshow`. Defaults to "auto".
-        **kwargs: Any additional keyword arguments are passed to `squarify.plot` e.g. `facecolor` and `edgecolor`
-            can be used to edit the rectangles behind the figures. Or labels can be added with `label`
+        **kwargs: Any additional keyword arguments are passed to `squarify.plot` e.g. `facecolor` and `edgecolor`.
+            can be used to edit the rectangles behind the figures. Or labels can be added with `label`.
     """
+    if sort:
+        # Sort sizes and images based on sizes
+        images = [image for _, image in _sort_relative_to_x(x=sizes, y=images)]
+        for key, values in kwargs.items():
+            try:
+                if len(sizes) == len(values):
+                    sorted_values = _sort_relative_to_x(x=sizes, y=values)
+                    kwargs[key] = [v for _,v in sorted_values]
+            except TypeError:
+                pass
+                # values for key not sorted relative to sizes
+        sizes = sorted(sizes, reverse=True)
+    # Get the rectangle artists we need
     squarify_plot = squarify.plot(sizes, **kwargs)
     # Get the rectangle artists we need
     # Assumes the first n Rectangles are the squares, where n is the number of sizes
