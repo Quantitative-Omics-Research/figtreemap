@@ -69,6 +69,15 @@ def squarify_images(squares, images, ax, letterbox=True, aspect="auto"):
         ax.imshow(image, extent=extent, aspect=aspect, zorder=square.get_zorder() + 1)
 
 def _sort_relative_to_x(x, y):
+    """Sort y based on the values in x
+
+    Args:
+        x (iterable): An iterable to sort by its values.
+        y (iterable): An iterable in the same order as x in need of sorting.
+
+    Returns:
+        list: A list of the values in y, sorted by the values in x.
+    """
     sorted_y = sorted(zip(x, y), key= lambda xy: xy[0], reverse=True)
     return sorted_y
 
