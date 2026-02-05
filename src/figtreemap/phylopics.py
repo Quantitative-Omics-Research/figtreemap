@@ -9,7 +9,6 @@ from lxml import etree
 API_BASE = "https://api.phylopic.org"
 HEADERS = {"Accept": "application/vnd.phylopic.v2+json"}
 
-
 def get_phylopics_build_number():
     """Get the current PhyloPic build number (required for subsequent queries)."""
     resp = requests.get(API_BASE, headers=HEADERS)
@@ -18,7 +17,13 @@ def get_phylopics_build_number():
     return data.get("build")
 
 
-build = get_phylopics_build_number()
+_build = None
+
+def get_build():
+    global _build
+    if _build is None:
+        _build = get_phylopics_build_number()
+    return _build
 
 
 def get_lineage_ott_ids(ott_id: int | str) -> list[int]:
@@ -46,6 +51,7 @@ def get_phylopic_svg_url_from_ott_ids(ott_ids: list[int]) -> str:
         str: Most specific available SVG URL
     """
     ott_ids_string = ",".join([str(id) for id in ott_ids])
+    build = get_build()
     response = requests.get(
         API_BASE
         + f"/resolve/opentreeoflife.org/taxonomy"
