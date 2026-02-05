@@ -68,6 +68,7 @@ def squarify_images(squares, images, ax, letterbox=True, aspect="auto"):
             extent = letterbox_extent(extent, image)
         ax.imshow(image, extent=extent, aspect=aspect, zorder=square.get_zorder() + 1)
 
+
 def _sort_relative_to_x(x, y):
     """Sort y based on the values in x
 
@@ -78,8 +79,9 @@ def _sort_relative_to_x(x, y):
     Returns:
         list: A list of the values in y, sorted by the values in x.
     """
-    sorted_y = sorted(zip(x, y), key= lambda xy: xy[0], reverse=True)
+    sorted_y = sorted(zip(x, y), key=lambda xy: xy[0], reverse=True)
     return sorted_y
+
 
 def figtreemap(sizes, images, letterbox=True, aspect="auto", sort=True, **kwargs):
     """Plot treemap with figures in it.
@@ -104,7 +106,7 @@ def figtreemap(sizes, images, letterbox=True, aspect="auto", sort=True, **kwargs
             try:
                 if len(sizes) == len(values):
                     sorted_values = _sort_relative_to_x(x=sizes, y=values)
-                    kwargs[key] = [v for _,v in sorted_values]
+                    kwargs[key] = [v for _, v in sorted_values]
             except TypeError:
                 pass
                 # values for key not sorted relative to sizes

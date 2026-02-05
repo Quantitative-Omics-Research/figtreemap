@@ -13,6 +13,7 @@ import figtreemap.image_prep as mod
 # Helpers
 # ---------------------------------------------------------------------
 
+
 def simple_svg_tree():
     """Small in-memory SVG for tests."""
     root = etree.Element("svg")
@@ -24,6 +25,7 @@ def simple_svg_tree():
 # ---------------------------------------------------------------------
 # size_colours
 # ---------------------------------------------------------------------
+
 
 def test_size_colours_returns_hex_strings():
     sizes = [0, 5, 10]
@@ -57,6 +59,7 @@ def test_size_colours_same_input_same_output():
 # edit_svg_tree
 # ---------------------------------------------------------------------
 
+
 def test_edit_svg_tree_sets_attributes_on_all_elements():
     tree = simple_svg_tree()
 
@@ -81,6 +84,7 @@ def test_edit_svg_tree_returns_same_tree_instance():
 # svg2png
 # ---------------------------------------------------------------------
 
+
 def test_svg2png_calls_cairosvg_and_returns_pil_image():
     tree = simple_svg_tree()
 
@@ -89,7 +93,9 @@ def test_svg2png_calls_cairosvg_and_returns_pil_image():
     fake_image = Image.new("RGB", (10, 10))
 
     with (
-        patch.object(mod.cairosvg, "svg2png", return_value=fake_png_bytes) as svg2png_mock,
+        patch.object(
+            mod.cairosvg, "svg2png", return_value=fake_png_bytes
+        ) as svg2png_mock,
         patch.object(mod.Image, "open", return_value=fake_image) as open_mock,
     ):
         img = mod.svg2png(tree)
@@ -102,8 +108,10 @@ def test_svg2png_calls_cairosvg_and_returns_pil_image():
 def test_svg2png_passes_svg_bytes_to_cairosvg():
     tree = simple_svg_tree()
 
-    with patch.object(mod.cairosvg, "svg2png", return_value=b"x") as mock_svg2png, \
-         patch.object(mod.Image, "open", return_value=MagicMock()):
+    with (
+        patch.object(mod.cairosvg, "svg2png", return_value=b"x") as mock_svg2png,
+        patch.object(mod.Image, "open", return_value=MagicMock()),
+    ):
         mod.svg2png(tree)
 
     args, kwargs = mock_svg2png.call_args
@@ -114,6 +122,7 @@ def test_svg2png_passes_svg_bytes_to_cairosvg():
 # ---------------------------------------------------------------------
 # prep_svg (integration)
 # ---------------------------------------------------------------------
+
 
 def test_prep_svg_calls_edit_and_svg2png_in_order():
     tree = simple_svg_tree()

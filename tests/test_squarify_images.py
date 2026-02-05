@@ -11,8 +11,10 @@ import figtreemap.squarify_images as mod
 # Helpers
 # ---------------------------------------------------------------------
 
+
 class DummyImage:
     """Minimal stand-in for PIL image using only `.size`."""
+
     def __init__(self, w, h):
         self.size = (w, h)
 
@@ -20,6 +22,7 @@ class DummyImage:
 # ---------------------------------------------------------------------
 # letterbox_extent
 # ---------------------------------------------------------------------
+
 
 def test_letterbox_extent_wider_image_matches_width():
     # image wider than rect -> shrink height
@@ -59,6 +62,7 @@ def test_letterbox_extent_equal_aspect_returns_original():
 # squarify_images
 # ---------------------------------------------------------------------
 
+
 def test_squarify_images_calls_imshow_with_letterbox():
     rect = patches.Rectangle((0, 0), 10, 10)
     rect.set_zorder(2)
@@ -94,6 +98,7 @@ def test_squarify_images_without_letterbox_uses_full_extent():
 # _sort_relative_to_x
 # ---------------------------------------------------------------------
 
+
 def test_sort_relative_to_x_descending():
     x = [1, 3, 2]
     y = ["a", "b", "c"]
@@ -106,6 +111,7 @@ def test_sort_relative_to_x_descending():
 # ---------------------------------------------------------------------
 # figtreemap
 # ---------------------------------------------------------------------
+
 
 def make_rect(x):
     return patches.Rectangle((x, 0), 1, 1)
@@ -120,9 +126,10 @@ def test_figtreemap_sorts_sizes_and_images_and_passes_to_helpers():
     rects = [make_rect(i) for i in range(3)]
     fake_ax.get_children = lambda: rects
 
-    with patch.object(mod.squarify, "plot", return_value=fake_ax) as plot_mock, \
-         patch.object(mod, "squarify_images") as sq_images_mock:
-
+    with (
+        patch.object(mod.squarify, "plot", return_value=fake_ax) as plot_mock,
+        patch.object(mod, "squarify_images") as sq_images_mock,
+    ):
         mod.figtreemap(sizes, images, letterbox=True, aspect="auto")
 
     # sizes sorted descending
@@ -145,9 +152,10 @@ def test_figtreemap_no_sort_keeps_order():
     rects = [make_rect(i) for i in range(3)]
     fake_ax.get_children = lambda: rects
 
-    with patch.object(mod.squarify, "plot", return_value=fake_ax) as plot_mock, \
-         patch.object(mod, "squarify_images") as sq_images_mock:
-
+    with (
+        patch.object(mod.squarify, "plot", return_value=fake_ax) as plot_mock,
+        patch.object(mod, "squarify_images") as sq_images_mock,
+    ):
         mod.figtreemap(sizes, images, sort=False)
 
     assert plot_mock.call_args.args[0] == sizes

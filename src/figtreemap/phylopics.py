@@ -1,13 +1,14 @@
 """Get most specific phylopic svg url based on open tree taxonomy name and lineage"""
 
 import requests
-from ratelimit import limits, sleep_and_retry 
+from ratelimit import limits, sleep_and_retry
 from opentree import OT
 from io import BytesIO
 from lxml import etree
 
 API_BASE = "https://api.phylopic.org"
 HEADERS = {"Accept": "application/vnd.phylopic.v2+json"}
+
 
 def get_phylopics_build_number():
     """Get the current PhyloPic build number (required for subsequent queries)."""
@@ -18,6 +19,7 @@ def get_phylopics_build_number():
 
 
 _build = None
+
 
 def get_build():
     global _build
@@ -65,8 +67,9 @@ def get_phylopic_svg_url_from_ott_ids(ott_ids: list[int]) -> str:
     svg_url = image_response.json().get("_links").get("vectorFile").get("href")
     return svg_url
 
-@sleep_and_retry 
-@limits(calls=5, period=1) # max 5 calls per second
+
+@sleep_and_retry
+@limits(calls=5, period=1)  # max 5 calls per second
 def get_svg(name: str):
     """Get a phylopic SVG based on a scientific name
 

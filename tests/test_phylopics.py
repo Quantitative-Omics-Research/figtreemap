@@ -10,6 +10,7 @@ from lxml import etree
 # Helpers
 # ---------------------------------------------------------------------
 
+
 class FakeResponse:
     def __init__(self, json_data=None, content=b""):
         self._json = json_data or {}
@@ -30,6 +31,7 @@ def import_module_with_build():
     with patch("requests.get") as mock_get:
         mock_get.return_value = FakeResponse({"build": 123})
         import figtreemap.phylopics as mod
+
         importlib.reload(mod)
     return mod
 
@@ -37,6 +39,7 @@ def import_module_with_build():
 # ---------------------------------------------------------------------
 # get_phylopics_build_number
 # ---------------------------------------------------------------------
+
 
 def test_get_phylopics_build_number_returns_build():
     mod = import_module_with_build()
@@ -52,6 +55,7 @@ def test_get_phylopics_build_number_returns_build():
 # ---------------------------------------------------------------------
 # get_lineage_ott_ids
 # ---------------------------------------------------------------------
+
 
 def test_get_lineage_ott_ids_extracts_ids():
     mod = import_module_with_build()
@@ -75,17 +79,16 @@ def test_get_lineage_ott_ids_extracts_ids():
 # get_phylopic_svg_url_from_ott_ids
 # ---------------------------------------------------------------------
 
+
 def test_get_phylopic_svg_url_from_ott_ids_returns_vector_href():
     mod = import_module_with_build()
     mod.build = 555  # avoid using import-time value
 
-    first = FakeResponse({
-        "_links": {"primaryImage": {"href": "/img/abc"}}
-    })
+    first = FakeResponse({"_links": {"primaryImage": {"href": "/img/abc"}}})
 
-    second = FakeResponse({
-        "_links": {"vectorFile": {"href": "https://cdn.test/file.svg"}}
-    })
+    second = FakeResponse(
+        {"_links": {"vectorFile": {"href": "https://cdn.test/file.svg"}}}
+    )
 
     with (
         patch.object(mod, "get_build", return_value=555),
