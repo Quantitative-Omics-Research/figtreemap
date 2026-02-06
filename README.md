@@ -6,7 +6,18 @@ Create tree maps with images proportional to the rectangles. This package focuse
 # 🛠️ Installation
 
 # 🚀 Quick start
+```{python}
+import matplotlib.pyplot as plt
+import figtreemap
 
+sizes = [30,4,450,700,190,1200,2,50,70,450,60]
+names = ["Canis familiaris","Felis catus","Equus ferus","Bos taurus","Panthera leo","Giraffa camelopardalis","Oryctolagus cuniculus","Pan troglodytes","Homo sapiens","Ursus maritimus","Orycteropus afer"]
+
+svgs = [figtreemap.phylopics.get_svg(name) for name in names]
+imgs = [figtreemap.image_prep.prep_svg(svg) for svg in svgs]
+figtreemap.squarify_images.figtreemap(sizes, imgs)
+plt.show()
+```
 # ✨ Features
 
 # 📄 Docs
