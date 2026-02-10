@@ -14,7 +14,7 @@ def letterbox_extent(extent, img):
         img (array-like): Image array shaped (H, W, C).
 
     Returns:
-        list: A list [xmin2, xmax2, ymin2, ymax2] representing the adjusted
+        (list): A list [xmin2, xmax2, ymin2, ymax2] representing the adjusted
         extent that preserves the aspect ratio.
     """
 
@@ -77,7 +77,7 @@ def _sort_relative_to_x(x, y):
         y (iterable): An iterable in the same order as x in need of sorting.
 
     Returns:
-        list: A list of the values in y, sorted by the values in x.
+        (list): A list of the values in y, sorted by the values in x.
     """
     sorted_y = sorted(zip(x, y), key=lambda xy: xy[0], reverse=True)
     return sorted_y

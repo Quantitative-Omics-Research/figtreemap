@@ -35,7 +35,7 @@ def get_lineage_ott_ids(ott_id: int | str) -> list[int]:
         ott_id (int | str): An open tree taxonomy ID
 
     Returns:
-        list[int]: List of taxon IDs for given ID, most to least specific
+        (list[int]): List of taxon IDs for given ID, most to least specific
     """
     record = OT.taxon_info(ott_id, include_lineage=True)
     lineage = record.response_dict.get("lineage")
@@ -50,7 +50,7 @@ def get_phylopic_svg_url_from_ott_ids(ott_ids: list[int]) -> str:
         ott_ids (list[int]): List of open tree taxonomy IDs from most to least specific
 
     Returns:
-        str: Most specific available SVG URL
+        (str): Most specific available SVG URL
     """
     ott_ids_string = ",".join([str(id) for id in ott_ids])
     build = get_build()
@@ -79,7 +79,7 @@ def get_svg(name: str):
         name (str): Scientific name from open tree taxonomy
 
     Returns:
-        lxml.etree._ElementTree: lxml tree of SVG image
+        (lxml.etree._ElementTree): lxml tree of SVG image
     """
     # Get open tree taxonomy id for name
     ott_id = OT.get_ottid_from_name(name)

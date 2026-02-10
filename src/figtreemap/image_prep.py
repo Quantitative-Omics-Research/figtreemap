@@ -20,7 +20,7 @@ def size_colours(sizes, colormap="viridis"):
         colormap (str, optional): Name of a matplotlib colour map, or a colormap that accepts numbers 0-1. Defaults to "viridis".
 
     Returns:
-        list[str]: List of colour hex codes
+        (list[str]): List of colour hex codes
     """
     if isinstance(colormap, str):
         colormap = plt.get_cmap(colormap)
@@ -39,7 +39,7 @@ def edit_svg_tree(tree, **kwargs):
             E.g. `fill`, `stroke`, `stroke_width`. Note that _ are internally converted to -, e.g. `stroke_width` becomes `stroke-width`.
 
     Returns:
-        lxml.etree._ElementTree: An updated tree
+        (lxml.etree._ElementTree): An updated tree
     """
     root = tree.getroot()
     for key, value in kwargs.items():
@@ -56,7 +56,7 @@ def svg2png(tree):
         tree (lxml.etree._ElementTree): An SVG element tree
 
     Returns:
-        PIL.PngImagePlugin.PngImageFile: PNG image
+        (PIL.PngImagePlugin.PngImageFile): PNG image
     """
     svg_bytes = etree.tostring(tree.getroot())
     png_bytes = cairosvg.svg2png(bytestring=svg_bytes)
@@ -73,7 +73,7 @@ def prep_svg(tree: etree._ElementTree, **kwargs):
             E.g. `fill`, `stroke`, `stroke_width`. Note that _ are internally converted to -, e.g. `stroke_width` becomes `stroke-width`.
 
     Returns:
-        PIL.PngImagePlugin.PngImageFile: PNG image
+        (PIL.PngImagePlugin.PngImageFile): PNG image
     """
     tree = edit_svg_tree(tree, **kwargs)
     png = svg2png(tree)
