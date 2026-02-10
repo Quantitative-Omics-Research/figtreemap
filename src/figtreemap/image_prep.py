@@ -1,3 +1,5 @@
+"""Prepare images for treemap, simple SVG image editing and convertion to PNG"""
+
 import requests
 from lxml import etree
 import numpy as np

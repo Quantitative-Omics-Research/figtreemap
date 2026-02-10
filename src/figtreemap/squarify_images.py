@@ -1,3 +1,5 @@
+"""Plot images in treemaps"""
+
 import squarify
 import matplotlib.patches as patches
 
