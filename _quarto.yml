@@ -1,0 +1,61 @@
+
+# website:
+#   title: "figtreemap"
+#   navbar:
+#     left:
+#       - href: reference/index.qmd
+#         text: Home
+#       - href: reference/reference.qmd
+#         text: API Reference
+
+
+project:
+  type: website
+
+website:
+  title: figtreemap
+  navbar:
+    left:
+      - href: docs/index.qmd
+        text: Home
+      - href: docs/api_index.qmd
+        text: API
+        menu:
+        - docs/phylopics.qmd
+        - docs/image_prep.qmd
+        - docs/squarify_images.qmd
+
+# tell quarto to read the generated sidebar
+metadata-files:
+  - docs/_sidebar.yml
+
+format:
+  html:
+    theme: darkly
+    toc: true
+    toc-depth: 3
+
+quartodoc:
+  # the name used to import the package you want to create reference docs for
+  package: figtreemap
+  sections:
+    - title: figtreemap
+      desc: Functions to plot treemaps with figures.
+      contents:
+        - name: phylopics
+          member_order: 'source'
+        - name: image_prep
+          member_order: 'source'
+        - name: squarify_images
+          member_order: 'source'
+  dir: docs
+  out_index: api_index.qmd
+  title: API
+  # write sidebar and style data
+  # sidebar: 
+  #   file: docs/_sidebar.yml
+  #   search: true
+  #   contents:
+  #     - docs/index.qmd
+  css: docs/_styles-quartodoc.css
+  parser: google

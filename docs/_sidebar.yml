@@ -1,0 +1,16 @@
+website:
+  sidebar:
+  - contents:
+    - file: docs/index.qmd
+      text: Home
+    - text: API
+    - file: docs/api_index.qmd
+      text: figtreemap
+      contents:
+        - docs/phylopics.qmd
+        - docs/image_prep.qmd
+        - docs/squarify_images.qmd
+
+    id: docs
+    search: true
+  - id: dummy-sidebar
