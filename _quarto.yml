@@ -18,6 +18,8 @@ website:
     left:
       - href: docs/index.qmd
         text: Home
+      - href: docs/guide.qmd
+        text: Guide
       - href: docs/api_index.qmd
         text: API
         menu:
