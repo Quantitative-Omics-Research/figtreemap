@@ -11,7 +11,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 
 
-def size_colours(sizes, colormap="viridis"):
+def size_colours(sizes, colormap="viridis", normalise=True):
     """Convert a list of sizes to colour hex codes
 
     Normalises the given `sizes` to 0-1 then converts them to colours
@@ -26,8 +26,12 @@ def size_colours(sizes, colormap="viridis"):
     """
     if isinstance(colormap, str):
         colormap = plt.get_cmap(colormap)
-    norm = matplotlib.colors.Normalize()
-    colours = colormap(norm(sizes))
+    if normalise:
+        norm = matplotlib.colors.Normalize()
+        colours = colormap(norm(sizes))
+    else:
+        norm = matplotlib.colors.Normalize()
+        colours = colormap(sizes)
     hexcolours = [matplotlib.colors.to_hex(c) for c in colours]
     return hexcolours
 
