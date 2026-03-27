@@ -14,12 +14,14 @@ import matplotlib.pyplot as plt
 def size_colours(sizes, colormap="viridis", normalise=True):
     """Convert a list of sizes to colour hex codes
 
-    Normalises the given `sizes` to 0-1 then converts them to colours
-    using a matplotlib colour map, and returns the colours as hex codes.
+    Converts `sizes` to colours using a matplotlib colour map,
+    and returns the colours as hex codes. Optionally normalises
+    the given `sizes` to 0-1 first.
 
     Args:
         sizes (list[float]): An iterable of numbers to convert to colours
         colormap (str, optional): Name of a matplotlib colour map, or a colormap that accepts numbers 0-1. Defaults to "viridis".
+        normalise (bool, optional): Should `sizes` be normalised before converting to colours?
 
     Returns:
         (list[str]): List of colour hex codes
