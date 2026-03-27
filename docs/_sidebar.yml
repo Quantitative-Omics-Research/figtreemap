@@ -3,6 +3,8 @@ website:
   - contents:
     - file: docs/index.qmd
       text: Home
+    - file: docs/guide.qmd
+      text: Guide
     - text: API
     - file: docs/api_index.qmd
       text: figtreemap

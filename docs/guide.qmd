@@ -1,0 +1,215 @@
+# figtreemap
+
+`figtreemap` lets you add pictures to treemaps.
+
+Treemaps plot a series of rectangles
+where each rectangle’s size represents a value. They are similar to bar plots but
+more tightly packed for comparing more categories. `figtreemap` adds pictures to these
+rectangles making it easier to tell what's what at a glance. `figtreemap` focuses on
+adding [phylopics](https://www.phylopic.org/) so is especially good for plotting data about different species.
+
+```{python}
+import matplotlib.pyplot as plt
+import figtreemap
+```
+
+# Quick start
+Here's a very quick example, using `squarify`'s default random colouring.
+```{python}
+sizes = [30,4,450,700,190,1200,2,50,70,450,60]
+names = ["Canis familiaris","Felis catus","Equus ferus","Bos taurus","Panthera leo","Giraffa camelopardalis","Oryctolagus cuniculus","Pan troglodytes","Homo sapiens","Ursus maritimus","Orycteropus afer"]
+
+svgs = [figtreemap.phylopics.get_svg(name) for name in names]
+imgs = [figtreemap.image_prep.prep_svg(svg) for svg in svgs]
+figtreemap.squarify_images.figtreemap(sizes, imgs)
+plt.show()
+```
+
+# Step by step
+Let's work through an example using data on mammal sizes.
+
+## Example data
+Let's download some example data on mammal sizes.
+```{python}
+import requests
+from io import StringIO
+import pandas as pd
+
+response = requests.get(
+    "https://gist.githubusercontent.com/DAWells/95fcd46057c66aaf33dd9ca7c294c4b2/raw/c670dce7063c6aaf65085eeead5823d9cd497b0f/gestation_mass.csv"
+)
+mammal_size = pd.read_csv(StringIO(response.text))
+
+sizes = mammal_size.adult_mass_kg
+names = mammal_size.latin
+
+mammal_size.head()
+```
+
+
+## Getting phylopics
+```{python}
+sizes=sizes[:5]
+names = names[:5]
+```
+
+Phylopics are an amazing collection of free silhouettes of different species.
+We can get phylopics just from the latin name. If a phylopic is not available for
+our species, we take the most specific example available for the lineage.
+
+Name look up is handled by the [opentree](https://opentree.readthedocs.io/en/latest/) package
+using the [open tree of life](https://tree.opentreeoflife.org/opentree/argus/opentree16.1@ott93302).
+If you have difficulty getting the correct image, look up the name used in open tree of life.
+
+`figtreemap.phylopics.get_svg()` will download an phylopic SVG based on a given latin name.
+Here we iterate over a list of names to get a list of SVGs.
+```{python}
+svgs = [figtreemap.phylopics.get_svg(name) for name in names]
+```
+
+This is one of our SVGs, by default they are black but we'll colour them based on their value below.
+```{python}
+
+from lxml import etree
+from IPython.display import SVG, display
+display(SVG(etree.tostring(svgs[0])))
+
+```
+::: {.callout-tip}
+To avoid downloading the same images a bunch of times, it's a good idea to save the images
+so that you can load them locally in future.
+:::
+```{python}
+# Save SVGs
+for name, svg in zip(names, svgs):
+    svg.write(
+        f"{name}.svg",
+        encoding="utf-8",
+        xml_declaration=True,
+        pretty_print=True,
+    )
+
+# Load local SVGs
+from lxml import etree
+
+svgs = []
+for name in names:
+    tree = etree.parse(f"{name}.svg")
+    svgs.append(tree)
+```
+
+## Preparing images
+Let's colour our silhouettes by the size of the mammal. We use `figtreemap.image_prep.size_colours()`
+to convert numeric values into a series of colours. `figtreemap.image_prep.size_colours()` also takes
+an argument `colourmap` that let's you specifiy a maplotlib [colourmap](https://matplotlib.org/stable/users/explain/colors/colormaps.html) or supply your own.
+See the [sorting](#sorting) section for an example using categorical colours.
+
+`figtreemap.image_prep.prep_svg()` converts our SVGs to PNGs ready for plotting but also lets us change
+attributes of the image like `fill`, and `stroke`. This function uses `*kwargs` to let you
+set any SVG attributes you like.
+```{python}
+hexcolours = figtreemap.image_prep.size_colours(sizes, colormap="plasma")
+imgs = [
+    figtreemap.image_prep.prep_svg(svg, fill=colour, stroke="black", stroke_width="300")
+    for svg, colour in zip(svgs, hexcolours)
+]
+```
+
+## Making treemaps
+`figtreemap.squarify_images.figtreemap()` creates a treemap using [`squarify`](https://github.com/laserson/squarify) and adds our PNGs to the squares. It takes a list of the sizes and a list of the images, which must be in the same order.
+
+We set the colours of our images above in [Preparing images](#preparing-images), but we can set the colour of the rectangles when creating the plot. 
+`figtreemap.squarify_images.figtreemap()` uses `*kwargs` so any extra arguments are unpacked and
+passed to `squarify.plot()`.
+
+::: {.callout-tip}
+Setting the rectangles to the same colour as the images but with low alpha is a nice way
+to make the images stand out.
+:::
+```{python}
+figtreemap.squarify_images.figtreemap(
+    sizes,
+    imgs,
+    facecolor=hexcolours,
+    edgecolor=hexcolours,
+    alpha=0.2
+)
+plt.show()
+```
+
+# Extra details
+## Sorting
+By default `figtreemap.squarify_images.figtreemap()` sorts your images so they pack to gether as squarely as possible.
+If you set `sort=False` you can have more control over the ordering of rectangles but as a result they will be less square.
+
+To illustrate this let's use the categorical colour map `tab10`.
+We convert the categories to integers using `.astype("category").cat.codes`,
+and convert them to colours using `figtreemap.image_prep.size_colours()` as before
+but we set `normalise` to `False`. Storing these newly coloured images in a dataframe makes it easier to sort sizes and images together.
+```{python}
+# Generate categorical colours for mammal_type
+categorical_colours = figtreemap.image_prep.size_colours(
+    mammal_size.mammal_type.astype("category").cat.codes,
+    colormap="tab10",
+    normalise=False
+)
+
+sorted_data = pd.DataFrame({
+    'name': names,
+    'size': sizes,
+    'mammal_type': mammal_size.mammal_type[:5],
+    'svg': svgs,
+    'colour': categorical_colours[:5]
+})
+
+# Convert the SVGs to PNGs with the categorical colour
+sorted_data['image'] = [
+    figtreemap.image_prep.prep_svg(svg, fill=colour, stroke="black", stroke_width="300")
+    for svg, colour in zip(sorted_data.svg, sorted_data.colour)
+]
+
+# Sorting the dataframe keeps the correct images and sizes paired up
+sorted_data = sorted_data.sort_values(['mammal_type','size'])
+```
+By default `figtreemap.squarify_images.figtreemap()` ignores the order and sorts
+everything by the `sizes` argument. This gives the optimal packing.
+```{python}
+figtreemap.squarify_images.figtreemap(
+    sorted_data['size'],
+    sorted_data['image'],
+    facecolor=sorted_data['colour'],
+    alpha=0.2,
+    edgecolor=sorted_data['colour'],
+)
+plt.show()
+```
+But if you set `sort=False` it uses `sizes` and `images` in the order given.
+This may lead to less square rectangles but allows you more control on grouping.
+```{python}
+figtreemap.squarify_images.figtreemap(
+    sorted_data['size'],
+    sorted_data['image'],
+    facecolor=sorted_data['colour'],
+    alpha=0.2,
+    edgecolor=sorted_data['colour'],
+)
+plt.show()
+```
+
+## Letterbox
+By default the image is as large as it can be within it's rectangle without changing the aspect ratio.
+If you set `letterbox=False`, the image is stretched to fill the rectangle.
+```{python}
+figtreemap.squarify_images.figtreemap(
+    sizes,
+    imgs,
+    facecolor=hexcolours,
+    edgecolor=hexcolours,
+    alpha=0.2,
+    letterbox=False
+)
+plt.show()
+```
+
+# Other pictures
+`figtreemap` was build with phylopics in mind, but you can use any other SVG or PNG instead.
