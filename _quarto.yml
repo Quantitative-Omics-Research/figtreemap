@@ -36,6 +36,7 @@ format:
     theme: darkly
     toc: true
     toc-depth: 3
+    embed-resources: true
 
 quartodoc:
   # the name used to import the package you want to create reference docs for
