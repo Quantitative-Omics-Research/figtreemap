@@ -11,7 +11,7 @@
 
 project:
   type: website
-
+  
 website:
   title: figtreemap
   navbar:
@@ -33,7 +33,9 @@ metadata-files:
 
 format:
   html:
-    theme: darkly
+    theme:
+      - darkly
+      - custom.scss
     toc: true
     toc-depth: 3
     embed-resources: true
