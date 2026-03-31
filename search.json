@@ -81,17 +81,17 @@
     "href": "docs/index.html",
     "title": "Home",
     "section": "",
-    "text": "Functions to plot treemaps with figures.\n\n\n\nphylopics\nGet most specific phylopic svg url based on open tree taxonomy name and lineage\n\n\nimage_prep\nPrepare images for treemap, simple SVG image editing and convertion to PNG\n\n\nsquarify_images\nPlot images in treemaps",
+    "text": "Plot treemaps with figures\nCreate treemaps with images proportional to the rectangles. This package focuses on getting and colouring phylopic SVGs but any PNG will work too.",
     "crumbs": [
       "Home"
     ]
   },
   {
-    "objectID": "docs/index.html#figtreemap",
-    "href": "docs/index.html#figtreemap",
+    "objectID": "docs/index.html#figtreemap-1",
+    "href": "docs/index.html#figtreemap-1",
     "title": "Home",
-    "section": "",
-    "text": "Functions to plot treemaps with figures.\n\n\n\nphylopics\nGet most specific phylopic svg url based on open tree taxonomy name and lineage\n\n\nimage_prep\nPrepare images for treemap, simple SVG image editing and convertion to PNG\n\n\nsquarify_images\nPlot images in treemaps",
+    "section": "figtreemap",
+    "text": "figtreemap\nFunctions to plot treemaps with figures.\n\n\n\nphylopics\nGet most specific phylopic svg url based on open tree taxonomy name and lineage\n\n\nimage_prep\nPrepare images for treemap, simple SVG image editing and convertion to PNG\n\n\nsquarify_images\nPlot images in treemaps",
     "crumbs": [
       "Home"
     ]
