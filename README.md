@@ -1,7 +1,7 @@
 # figtreemap
-Plot tree maps with figures
+Plot treemaps with figures
 
-Create tree maps with images proportional to the rectangles. This package focuses on getting and colouring [phylopic](https://www.phylopic.org/) SVGs but any PNG will work too.
+Create treemaps with images proportional to the rectangles. This package focuses on getting and colouring [phylopic](https://www.phylopic.org/) SVGs but any PNG will work too.
 
 # 🛠️ Installation
 
@@ -21,10 +21,15 @@ plt.show()
 # ✨ Features
 
 # 📄 Docs
+Docs are hosted [here](https://quantitative-omics-research.github.io/figtreemap/docs/)
+with a [step by step guide](https://quantitative-omics-research.github.io/figtreemap/docs/guide.html)
+and [API reference](https://quantitative-omics-research.github.io/figtreemap/docs/api_index.html).
 
 # 🐛 Troubleshooting
+Please highlight bugs and ask questions as github [issues](https://github.com/Quantitative-Omics-Research/figtreemap/issues).
 
 # 🤝 Contributing
+Please make requests and suggestions as github [issues](https://github.com/Quantitative-Omics-Research/figtreemap/issues) and if you would like to make an improvement yourself please submit a pull request.
 
 # ⚖️ Licence
-
+`figtreemap` is distributed under [MIT licence](https://github.com/Quantitative-Omics-Research/figtreemap/blob/main/LICENCE).
