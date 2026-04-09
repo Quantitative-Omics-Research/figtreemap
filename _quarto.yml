@@ -54,7 +54,7 @@ quartodoc:
         - name: squarify_images
           member_order: 'source'
   dir: docs
-  out_index: index.qmd
+  out_index: api_index.qmd
   title: API
   # write sidebar and style data
   # sidebar: 
