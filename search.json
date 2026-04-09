@@ -1,5 +1,25 @@
 [
   {
+    "objectID": "docs/index.html",
+    "href": "docs/index.html",
+    "title": "API",
+    "section": "",
+    "text": "Functions to plot treemaps with figures.\n\n\n\nphylopics\nGet most specific phylopic svg url based on open tree taxonomy name and lineage\n\n\nimage_prep\nPrepare images for treemap, simple SVG image editing and convertion to PNG\n\n\nsquarify_images\nPlot images in treemaps",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "docs/index.html#figtreemap",
+    "href": "docs/index.html#figtreemap",
+    "title": "API",
+    "section": "",
+    "text": "Functions to plot treemaps with figures.\n\n\n\nphylopics\nGet most specific phylopic svg url based on open tree taxonomy name and lineage\n\n\nimage_prep\nPrepare images for treemap, simple SVG image editing and convertion to PNG\n\n\nsquarify_images\nPlot images in treemaps",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
     "objectID": "docs/guide.html",
     "href": "docs/guide.html",
     "title": "figtreemap",
@@ -77,23 +97,27 @@
     ]
   },
   {
-    "objectID": "docs/index.html",
-    "href": "docs/index.html",
-    "title": "Home",
+    "objectID": "docs/image_prep.html",
+    "href": "docs/image_prep.html",
+    "title": "image_prep",
     "section": "",
-    "text": "Plot treemaps with figures\nCreate treemaps with images proportional to the rectangles. This package focuses on getting and colouring phylopic SVGs but any PNG will work too.",
+    "text": "image_prep\nPrepare images for treemap, simple SVG image editing and convertion to PNG\n\n\n\n\n\nName\nDescription\n\n\n\n\nsize_colours\nConvert a list of sizes to colour hex codes\n\n\nedit_svg_tree\nSet attributes of an SVG element tree\n\n\nsvg2png\nConverts an SVG element tree to a PNG\n\n\nprep_svg\nEdits an SVG element tree and converts it to a PNG\n\n\n\n\n\nimage_prep.size_colours(sizes, colormap='viridis', normalise=True)\nConvert a list of sizes to colour hex codes\nConverts sizes to colours using a matplotlib colour map, and returns the colours as hex codes. Optionally normalises the given sizes to 0-1 first.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsizes\nlist[float]\nAn iterable of numbers to convert to colours\nrequired\n\n\ncolormap\nstr\nName of a matplotlib colour map, or a colormap that accepts numbers 0-1. Defaults to “viridis”.\n'viridis'\n\n\nnormalise\nbool\nShould sizes be normalised before converting to colours?\nTrue\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlist[str]\nList of colour hex codes\n\n\n\n\n\n\n\nimage_prep.edit_svg_tree(tree, **kwargs)\nSet attributes of an SVG element tree\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntree\nlxml.etree._ElementTree\nAn SVG element tree\nrequired\n\n\n**kwargs\n\nAny additional keyword arguments are used to update SVG attributes of all elements. E.g. fill, stroke, stroke_width. Note that _ are internally converted to -, e.g. stroke_width becomes stroke-width.\n{}\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlxml.etree._ElementTree\nAn updated tree\n\n\n\n\n\n\n\nimage_prep.svg2png(tree)\nConverts an SVG element tree to a PNG\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntree\nlxml.etree._ElementTree\nAn SVG element tree\nrequired\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nPIL.PngImagePlugin.PngImageFile\nPNG image\n\n\n\n\n\n\n\nimage_prep.prep_svg(tree, **kwargs)\nEdits an SVG element tree and converts it to a PNG\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntree\nlxml.etree._ElementTree\nAn SVG element tree\nrequired\n\n\n**kwargs\n\nAny additional keyword arguments are used to update SVG attributes of all elements. E.g. fill, stroke, stroke_width. Note that _ are internally converted to -, e.g. stroke_width becomes stroke-width.\n{}\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nPIL.PngImagePlugin.PngImageFile\nPNG image",
     "crumbs": [
-      "Home"
+      "Home",
+      "figtreemap",
+      "image_prep"
     ]
   },
   {
-    "objectID": "docs/index.html#figtreemap-1",
-    "href": "docs/index.html#figtreemap-1",
-    "title": "Home",
-    "section": "figtreemap",
-    "text": "figtreemap\nFunctions to plot treemaps with figures.\n\n\n\nphylopics\nGet most specific phylopic svg url based on open tree taxonomy name and lineage\n\n\nimage_prep\nPrepare images for treemap, simple SVG image editing and convertion to PNG\n\n\nsquarify_images\nPlot images in treemaps",
+    "objectID": "docs/image_prep.html#functions",
+    "href": "docs/image_prep.html#functions",
+    "title": "image_prep",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\nsize_colours\nConvert a list of sizes to colour hex codes\n\n\nedit_svg_tree\nSet attributes of an SVG element tree\n\n\nsvg2png\nConverts an SVG element tree to a PNG\n\n\nprep_svg\nEdits an SVG element tree and converts it to a PNG\n\n\n\n\n\nimage_prep.size_colours(sizes, colormap='viridis', normalise=True)\nConvert a list of sizes to colour hex codes\nConverts sizes to colours using a matplotlib colour map, and returns the colours as hex codes. Optionally normalises the given sizes to 0-1 first.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsizes\nlist[float]\nAn iterable of numbers to convert to colours\nrequired\n\n\ncolormap\nstr\nName of a matplotlib colour map, or a colormap that accepts numbers 0-1. Defaults to “viridis”.\n'viridis'\n\n\nnormalise\nbool\nShould sizes be normalised before converting to colours?\nTrue\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlist[str]\nList of colour hex codes\n\n\n\n\n\n\n\nimage_prep.edit_svg_tree(tree, **kwargs)\nSet attributes of an SVG element tree\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntree\nlxml.etree._ElementTree\nAn SVG element tree\nrequired\n\n\n**kwargs\n\nAny additional keyword arguments are used to update SVG attributes of all elements. E.g. fill, stroke, stroke_width. Note that _ are internally converted to -, e.g. stroke_width becomes stroke-width.\n{}\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlxml.etree._ElementTree\nAn updated tree\n\n\n\n\n\n\n\nimage_prep.svg2png(tree)\nConverts an SVG element tree to a PNG\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntree\nlxml.etree._ElementTree\nAn SVG element tree\nrequired\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nPIL.PngImagePlugin.PngImageFile\nPNG image\n\n\n\n\n\n\n\nimage_prep.prep_svg(tree, **kwargs)\nEdits an SVG element tree and converts it to a PNG\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntree\nlxml.etree._ElementTree\nAn SVG element tree\nrequired\n\n\n**kwargs\n\nAny additional keyword arguments are used to update SVG attributes of all elements. E.g. fill, stroke, stroke_width. Note that _ are internally converted to -, e.g. stroke_width becomes stroke-width.\n{}\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nPIL.PngImagePlugin.PngImageFile\nPNG image",
     "crumbs": [
-      "Home"
+      "Home",
+      "figtreemap",
+      "image_prep"
     ]
   },
   {
@@ -121,57 +145,11 @@
     ]
   },
   {
-    "objectID": "docs/api_index.html",
-    "href": "docs/api_index.html",
-    "title": "API",
-    "section": "",
-    "text": "Functions to plot treemaps with figures.\n\n\n\nphylopics\nGet most specific phylopic svg url based on open tree taxonomy name and lineage\n\n\nimage_prep\nPrepare images for treemap, simple SVG image editing and convertion to PNG\n\n\nsquarify_images\nPlot images in treemaps",
-    "crumbs": [
-      "Home",
-      "figtreemap"
-    ]
-  },
-  {
-    "objectID": "docs/api_index.html#figtreemap",
-    "href": "docs/api_index.html#figtreemap",
-    "title": "API",
-    "section": "",
-    "text": "Functions to plot treemaps with figures.\n\n\n\nphylopics\nGet most specific phylopic svg url based on open tree taxonomy name and lineage\n\n\nimage_prep\nPrepare images for treemap, simple SVG image editing and convertion to PNG\n\n\nsquarify_images\nPlot images in treemaps",
-    "crumbs": [
-      "Home",
-      "figtreemap"
-    ]
-  },
-  {
-    "objectID": "docs/image_prep.html",
-    "href": "docs/image_prep.html",
-    "title": "image_prep",
-    "section": "",
-    "text": "image_prep\nPrepare images for treemap, simple SVG image editing and convertion to PNG\n\n\n\n\n\nName\nDescription\n\n\n\n\nsize_colours\nConvert a list of sizes to colour hex codes\n\n\nedit_svg_tree\nSet attributes of an SVG element tree\n\n\nsvg2png\nConverts an SVG element tree to a PNG\n\n\nprep_svg\nEdits an SVG element tree and converts it to a PNG\n\n\n\n\n\nimage_prep.size_colours(sizes, colormap='viridis', normalise=True)\nConvert a list of sizes to colour hex codes\nConverts sizes to colours using a matplotlib colour map, and returns the colours as hex codes. Optionally normalises the given sizes to 0-1 first.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsizes\nlist[float]\nAn iterable of numbers to convert to colours\nrequired\n\n\ncolormap\nstr\nName of a matplotlib colour map, or a colormap that accepts numbers 0-1. Defaults to “viridis”.\n'viridis'\n\n\nnormalise\nbool\nShould sizes be normalised before converting to colours?\nTrue\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlist[str]\nList of colour hex codes\n\n\n\n\n\n\n\nimage_prep.edit_svg_tree(tree, **kwargs)\nSet attributes of an SVG element tree\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntree\nlxml.etree._ElementTree\nAn SVG element tree\nrequired\n\n\n**kwargs\n\nAny additional keyword arguments are used to update SVG attributes of all elements. E.g. fill, stroke, stroke_width. Note that _ are internally converted to -, e.g. stroke_width becomes stroke-width.\n{}\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlxml.etree._ElementTree\nAn updated tree\n\n\n\n\n\n\n\nimage_prep.svg2png(tree)\nConverts an SVG element tree to a PNG\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntree\nlxml.etree._ElementTree\nAn SVG element tree\nrequired\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nPIL.PngImagePlugin.PngImageFile\nPNG image\n\n\n\n\n\n\n\nimage_prep.prep_svg(tree, **kwargs)\nEdits an SVG element tree and converts it to a PNG\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntree\nlxml.etree._ElementTree\nAn SVG element tree\nrequired\n\n\n**kwargs\n\nAny additional keyword arguments are used to update SVG attributes of all elements. E.g. fill, stroke, stroke_width. Note that _ are internally converted to -, e.g. stroke_width becomes stroke-width.\n{}\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nPIL.PngImagePlugin.PngImageFile\nPNG image",
-    "crumbs": [
-      "Home",
-      "figtreemap",
-      "image_prep"
-    ]
-  },
-  {
-    "objectID": "docs/image_prep.html#functions",
-    "href": "docs/image_prep.html#functions",
-    "title": "image_prep",
-    "section": "",
-    "text": "Name\nDescription\n\n\n\n\nsize_colours\nConvert a list of sizes to colour hex codes\n\n\nedit_svg_tree\nSet attributes of an SVG element tree\n\n\nsvg2png\nConverts an SVG element tree to a PNG\n\n\nprep_svg\nEdits an SVG element tree and converts it to a PNG\n\n\n\n\n\nimage_prep.size_colours(sizes, colormap='viridis', normalise=True)\nConvert a list of sizes to colour hex codes\nConverts sizes to colours using a matplotlib colour map, and returns the colours as hex codes. Optionally normalises the given sizes to 0-1 first.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsizes\nlist[float]\nAn iterable of numbers to convert to colours\nrequired\n\n\ncolormap\nstr\nName of a matplotlib colour map, or a colormap that accepts numbers 0-1. Defaults to “viridis”.\n'viridis'\n\n\nnormalise\nbool\nShould sizes be normalised before converting to colours?\nTrue\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlist[str]\nList of colour hex codes\n\n\n\n\n\n\n\nimage_prep.edit_svg_tree(tree, **kwargs)\nSet attributes of an SVG element tree\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntree\nlxml.etree._ElementTree\nAn SVG element tree\nrequired\n\n\n**kwargs\n\nAny additional keyword arguments are used to update SVG attributes of all elements. E.g. fill, stroke, stroke_width. Note that _ are internally converted to -, e.g. stroke_width becomes stroke-width.\n{}\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlxml.etree._ElementTree\nAn updated tree\n\n\n\n\n\n\n\nimage_prep.svg2png(tree)\nConverts an SVG element tree to a PNG\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntree\nlxml.etree._ElementTree\nAn SVG element tree\nrequired\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nPIL.PngImagePlugin.PngImageFile\nPNG image\n\n\n\n\n\n\n\nimage_prep.prep_svg(tree, **kwargs)\nEdits an SVG element tree and converts it to a PNG\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntree\nlxml.etree._ElementTree\nAn SVG element tree\nrequired\n\n\n**kwargs\n\nAny additional keyword arguments are used to update SVG attributes of all elements. E.g. fill, stroke, stroke_width. Note that _ are internally converted to -, e.g. stroke_width becomes stroke-width.\n{}\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nPIL.PngImagePlugin.PngImageFile\nPNG image",
-    "crumbs": [
-      "Home",
-      "figtreemap",
-      "image_prep"
-    ]
-  },
-  {
     "objectID": "docs/squarify_images.html",
     "href": "docs/squarify_images.html",
     "title": "squarify_images",
     "section": "",
-    "text": "squarify_images\nPlot images in treemaps\n\n\n\n\n\nName\nDescription\n\n\n\n\nletterbox_extent\nCompute an extent for imshow that preserves the image’s aspect ratio\n\n\nsquarify_images\nAdd images to fit within rectangles in a plot.\n\n\nfigtreemap\nPlot treemap with figures in it.\n\n\n\n\n\nsquarify_images.letterbox_extent(extent, img)\nCompute an extent for imshow that preserves the image’s aspect ratio while fitting entirely inside the given rectangle.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nextent\ntuple[float, float, float, float]\nA tuple (xmin, xmax, ymin, ymax) defining the rectangle bounds in data coordinates.\nrequired\n\n\nimg\narray - like\nImage array shaped (H, W, C).\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlist\nA list [xmin2, xmax2, ymin2, ymax2] representing the adjusted\n\n\n\n\nextent that preserves the aspect ratio.\n\n\n\n\n\n\n\nsquarify_images.squarify_images(\n    squares,\n    images,\n    ax,\n    letterbox=True,\n    aspect='auto',\n)\nAdd images to fit within rectangles in a plot. squares and images should be iterables of the same length. Optionally preserve the image aspect ratio with letterbox=True.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsquares\nlist[matplotlib.pathces.Rectangle]\nList of rectangle objects in a plot.\nrequired\n\n\nimages\nlist[PIL.PngImagePlugin.PngImageFile]\nList of PNG images.\nrequired\n\n\nax\nmatplotlib.axes._axes.Axes\nA matplotlib axes to add the images to.\nrequired\n\n\nletterbox\nbool\nShould the image aspect ratio be preserved? Defaults to True.\nTrue\n\n\naspect\nstr\naspect argument passed to imshow. Defaults to “auto”.\n'auto'\n\n\n\n\n\n\n\nsquarify_images.figtreemap(\n    sizes,\n    images,\n    letterbox=True,\n    aspect='auto',\n    sort=True,\n    **kwargs,\n)\nPlot treemap with figures in it.\nUses squarify.plot() to create a treemap then adds images to the rectangles with squarify_images. sizes and images must be in the same order so the first size goes with the first image etc.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsizes\nlist[float]\nAn iterable of numbers to convert to colours.\nrequired\n\n\nimages\nlist[PIL.PngImagePlugin.PngImageFile]\nList of PNG images.\nrequired\n\n\nletterbox\nbool\nShould the image aspect ratio be preserved? Defaults to True.\nTrue\n\n\nsort\nbool\nShould the images (and other attributes) be sorted by sizes? Improves squareness. Defaults to True.\nTrue\n\n\naspect\nstr\naspect argument passed to imshow. Defaults to “auto”.\n'auto'\n\n\n**kwargs\n\nAny additional keyword arguments are passed to squarify.plot e.g. facecolor and edgecolor. can be used to edit the rectangles behind the figures. Or labels can be added with label.\n{}",
+    "text": "squarify_images\nPlot images in treemaps\n\n\n\n\n\nName\nDescription\n\n\n\n\nletterbox_extent\nCompute an extent for imshow that preserves the image’s aspect ratio\n\n\nsquarify_images\nAdd images to fit within rectangles in a plot.\n\n\nfigtreemap\nPlot treemap with figures in it.\n\n\n\n\n\nsquarify_images.letterbox_extent(extent, img)\nCompute an extent for imshow that preserves the image’s aspect ratio while fitting entirely inside the given rectangle.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nextent\ntuple[float, float, float, float]\nA tuple (xmin, xmax, ymin, ymax) defining the rectangle bounds in data coordinates.\nrequired\n\n\nimg\narray - like\nImage array shaped (H, W, C).\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlist\nA list [xmin2, xmax2, ymin2, ymax2] representing the adjusted\n\n\n\n\nextent that preserves the aspect ratio.\n\n\n\n\n\n\n\nsquarify_images.squarify_images(\n    squares,\n    images,\n    ax,\n    letterbox=True,\n    aspect='auto',\n)\nAdd images to fit within rectangles in a plot. squares and images should be iterables of the same length. Optionally preserve the image aspect ratio with letterbox=True.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsquares\nlist[matplotlib.pathces.Rectangle]\nList of rectangle objects in a plot.\nrequired\n\n\nimages\nlist[PIL.PngImagePlugin.PngImageFile]\nList of PNG images.\nrequired\n\n\nax\nmatplotlib.axes._axes.Axes\nA matplotlib axes to add the images to.\nrequired\n\n\nletterbox\nbool\nShould the image aspect ratio be preserved? Defaults to True.\nTrue\n\n\naspect\nstr\naspect argument passed to imshow. Defaults to “auto”.\n'auto'\n\n\n\n\n\n\n\nsquarify_images.figtreemap(\n    sizes,\n    images,\n    letterbox=True,\n    aspect='auto',\n    sort=True,\n    **kwargs,\n)\nPlot treemap with figures in it.\nUses squarify.plot() to create a tree map then adds images to the rectangles with squarify_images. sizes and images must be in the same order so the first size goes with the first image etc.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsizes\nlist[float]\nAn iterable of numbers to convert to colours.\nrequired\n\n\nimages\nlist[PIL.PngImagePlugin.PngImageFile]\nList of PNG images.\nrequired\n\n\nletterbox\nbool\nShould the image aspect ratio be preserved? Defaults to True.\nTrue\n\n\nsort\nbool\nShould the images (and other attributes) be sorted by sizes? Improves squareness. Defaults to True.\nTrue\n\n\naspect\nstr\naspect argument passed to imshow. Defaults to “auto”.\n'auto'\n\n\n**kwargs\n\nAny additional keyword arguments are passed to squarify.plot e.g. facecolor and edgecolor. can be used to edit the rectangles behind the figures. Or labels can be added with label.\n{}",
     "crumbs": [
       "Home",
       "figtreemap",
@@ -183,7 +161,7 @@
     "href": "docs/squarify_images.html#functions",
     "title": "squarify_images",
     "section": "",
-    "text": "Name\nDescription\n\n\n\n\nletterbox_extent\nCompute an extent for imshow that preserves the image’s aspect ratio\n\n\nsquarify_images\nAdd images to fit within rectangles in a plot.\n\n\nfigtreemap\nPlot treemap with figures in it.\n\n\n\n\n\nsquarify_images.letterbox_extent(extent, img)\nCompute an extent for imshow that preserves the image’s aspect ratio while fitting entirely inside the given rectangle.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nextent\ntuple[float, float, float, float]\nA tuple (xmin, xmax, ymin, ymax) defining the rectangle bounds in data coordinates.\nrequired\n\n\nimg\narray - like\nImage array shaped (H, W, C).\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlist\nA list [xmin2, xmax2, ymin2, ymax2] representing the adjusted\n\n\n\n\nextent that preserves the aspect ratio.\n\n\n\n\n\n\n\nsquarify_images.squarify_images(\n    squares,\n    images,\n    ax,\n    letterbox=True,\n    aspect='auto',\n)\nAdd images to fit within rectangles in a plot. squares and images should be iterables of the same length. Optionally preserve the image aspect ratio with letterbox=True.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsquares\nlist[matplotlib.pathces.Rectangle]\nList of rectangle objects in a plot.\nrequired\n\n\nimages\nlist[PIL.PngImagePlugin.PngImageFile]\nList of PNG images.\nrequired\n\n\nax\nmatplotlib.axes._axes.Axes\nA matplotlib axes to add the images to.\nrequired\n\n\nletterbox\nbool\nShould the image aspect ratio be preserved? Defaults to True.\nTrue\n\n\naspect\nstr\naspect argument passed to imshow. Defaults to “auto”.\n'auto'\n\n\n\n\n\n\n\nsquarify_images.figtreemap(\n    sizes,\n    images,\n    letterbox=True,\n    aspect='auto',\n    sort=True,\n    **kwargs,\n)\nPlot treemap with figures in it.\nUses squarify.plot() to create a treemap then adds images to the rectangles with squarify_images. sizes and images must be in the same order so the first size goes with the first image etc.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsizes\nlist[float]\nAn iterable of numbers to convert to colours.\nrequired\n\n\nimages\nlist[PIL.PngImagePlugin.PngImageFile]\nList of PNG images.\nrequired\n\n\nletterbox\nbool\nShould the image aspect ratio be preserved? Defaults to True.\nTrue\n\n\nsort\nbool\nShould the images (and other attributes) be sorted by sizes? Improves squareness. Defaults to True.\nTrue\n\n\naspect\nstr\naspect argument passed to imshow. Defaults to “auto”.\n'auto'\n\n\n**kwargs\n\nAny additional keyword arguments are passed to squarify.plot e.g. facecolor and edgecolor. can be used to edit the rectangles behind the figures. Or labels can be added with label.\n{}",
+    "text": "Name\nDescription\n\n\n\n\nletterbox_extent\nCompute an extent for imshow that preserves the image’s aspect ratio\n\n\nsquarify_images\nAdd images to fit within rectangles in a plot.\n\n\nfigtreemap\nPlot treemap with figures in it.\n\n\n\n\n\nsquarify_images.letterbox_extent(extent, img)\nCompute an extent for imshow that preserves the image’s aspect ratio while fitting entirely inside the given rectangle.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nextent\ntuple[float, float, float, float]\nA tuple (xmin, xmax, ymin, ymax) defining the rectangle bounds in data coordinates.\nrequired\n\n\nimg\narray - like\nImage array shaped (H, W, C).\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlist\nA list [xmin2, xmax2, ymin2, ymax2] representing the adjusted\n\n\n\n\nextent that preserves the aspect ratio.\n\n\n\n\n\n\n\nsquarify_images.squarify_images(\n    squares,\n    images,\n    ax,\n    letterbox=True,\n    aspect='auto',\n)\nAdd images to fit within rectangles in a plot. squares and images should be iterables of the same length. Optionally preserve the image aspect ratio with letterbox=True.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsquares\nlist[matplotlib.pathces.Rectangle]\nList of rectangle objects in a plot.\nrequired\n\n\nimages\nlist[PIL.PngImagePlugin.PngImageFile]\nList of PNG images.\nrequired\n\n\nax\nmatplotlib.axes._axes.Axes\nA matplotlib axes to add the images to.\nrequired\n\n\nletterbox\nbool\nShould the image aspect ratio be preserved? Defaults to True.\nTrue\n\n\naspect\nstr\naspect argument passed to imshow. Defaults to “auto”.\n'auto'\n\n\n\n\n\n\n\nsquarify_images.figtreemap(\n    sizes,\n    images,\n    letterbox=True,\n    aspect='auto',\n    sort=True,\n    **kwargs,\n)\nPlot treemap with figures in it.\nUses squarify.plot() to create a tree map then adds images to the rectangles with squarify_images. sizes and images must be in the same order so the first size goes with the first image etc.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsizes\nlist[float]\nAn iterable of numbers to convert to colours.\nrequired\n\n\nimages\nlist[PIL.PngImagePlugin.PngImageFile]\nList of PNG images.\nrequired\n\n\nletterbox\nbool\nShould the image aspect ratio be preserved? Defaults to True.\nTrue\n\n\nsort\nbool\nShould the images (and other attributes) be sorted by sizes? Improves squareness. Defaults to True.\nTrue\n\n\naspect\nstr\naspect argument passed to imshow. Defaults to “auto”.\n'auto'\n\n\n**kwargs\n\nAny additional keyword arguments are passed to squarify.plot e.g. facecolor and edgecolor. can be used to edit the rectangles behind the figures. Or labels can be added with label.\n{}",
     "crumbs": [
       "Home",
       "figtreemap",

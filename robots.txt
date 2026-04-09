@@ -1,1 +1,1 @@
-Sitemap: https://Quantitative-Omics-Research.github.io/pictreemap/sitemap.xml
+Sitemap: https://Quantitative-Omics-Research.github.io/figtreemap/sitemap.xml
