@@ -28,6 +28,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install quartodoc
 
+      - name: Install python dependencies
+        run: |
+          pip install jupyter
+          pip install pandas
+
       - name: Build API docs with quartodoc
         run: quartodoc build
 
