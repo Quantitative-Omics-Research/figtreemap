@@ -21,8 +21,8 @@ plt.show()
 # ✨ Features
 
 # 📄 Docs
-Docs are hosted [here](https://quantitative-omics-research.github.io/figtreemap/docs/)
-with a [step by step guide](https://quantitative-omics-research.github.io/figtreemap/docs/guide.html)
+Docs are hosted [here](https://quantitative-omics-research.github.io/figtreemap/)
+with a [step by step guide](https://quantitative-omics-research.github.io/figtreemap/guide.html)
 and [API reference](https://quantitative-omics-research.github.io/figtreemap/docs/api_index.html).
 
 # 🐛 Troubleshooting
