@@ -16,9 +16,9 @@ website:
   title: figtreemap
   navbar:
     left:
-      - href: docs/index.qmd
+      - href: index.qmd
         text: Home
-      - href: docs/guide.qmd
+      - href: guide.qmd
         text: Guide
       - href: docs/api_index.qmd
         text: API
