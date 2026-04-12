@@ -1,7 +1,7 @@
 [
   {
-    "objectID": "docs/index.html",
-    "href": "docs/index.html",
+    "objectID": "index.html",
+    "href": "index.html",
     "title": "Home",
     "section": "",
     "text": "Plot treemaps with figures\nCreate treemaps with images proportional to the rectangles. This package focuses on getting and colouring phylopic SVGs but any PNG will work too.",
@@ -10,8 +10,8 @@
     ]
   },
   {
-    "objectID": "docs/index.html#figtreemap-1",
-    "href": "docs/index.html#figtreemap-1",
+    "objectID": "index.html#figtreemap-1",
+    "href": "index.html#figtreemap-1",
     "title": "Home",
     "section": "figtreemap",
     "text": "figtreemap\nFunctions to plot treemaps with figures.\n\n\n\nphylopics\nGet most specific phylopic svg url based on open tree taxonomy name and lineage\n\n\nimage_prep\nPrepare images for treemap, simple SVG image editing and convertion to PNG\n\n\nsquarify_images\nPlot images in treemaps",
@@ -20,80 +20,27 @@
     ]
   },
   {
-    "objectID": "docs/guide.html",
-    "href": "docs/guide.html",
-    "title": "figtreemap",
+    "objectID": "docs/squarify_images.html",
+    "href": "docs/squarify_images.html",
+    "title": "squarify_images",
     "section": "",
-    "text": "figtreemap lets you add pictures to treemaps.\nTreemaps plot a series of rectangles where each rectangle’s size represents a value. They are similar to bar plots but more tightly packed for comparing more categories. figtreemap adds pictures to these rectangles making it easier to tell what’s what at a glance. figtreemap focuses on adding phylopics so is especially good for plotting data about different species.\nimport matplotlib.pyplot as plt\nimport figtreemap",
+    "text": "squarify_images\nPlot images in treemaps\n\n\n\n\n\nName\nDescription\n\n\n\n\nletterbox_extent\nCompute an extent for imshow that preserves the image’s aspect ratio\n\n\nsquarify_images\nAdd images to fit within rectangles in a plot.\n\n\nfigtreemap\nPlot treemap with figures in it.\n\n\n\n\n\nsquarify_images.letterbox_extent(extent, img)\nCompute an extent for imshow that preserves the image’s aspect ratio while fitting entirely inside the given rectangle.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nextent\ntuple[float, float, float, float]\nA tuple (xmin, xmax, ymin, ymax) defining the rectangle bounds in data coordinates.\nrequired\n\n\nimg\narray - like\nImage array shaped (H, W, C).\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlist\nA list [xmin2, xmax2, ymin2, ymax2] representing the adjusted\n\n\n\n\nextent that preserves the aspect ratio.\n\n\n\n\n\n\n\nsquarify_images.squarify_images(\n    squares,\n    images,\n    ax,\n    letterbox=True,\n    aspect='auto',\n)\nAdd images to fit within rectangles in a plot. squares and images should be iterables of the same length. Optionally preserve the image aspect ratio with letterbox=True.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsquares\nlist[matplotlib.pathces.Rectangle]\nList of rectangle objects in a plot.\nrequired\n\n\nimages\nlist[PIL.PngImagePlugin.PngImageFile]\nList of PNG images.\nrequired\n\n\nax\nmatplotlib.axes._axes.Axes\nA matplotlib axes to add the images to.\nrequired\n\n\nletterbox\nbool\nShould the image aspect ratio be preserved? Defaults to True.\nTrue\n\n\naspect\nstr\naspect argument passed to imshow. Defaults to “auto”.\n'auto'\n\n\n\n\n\n\n\nsquarify_images.figtreemap(\n    sizes,\n    images,\n    letterbox=True,\n    aspect='auto',\n    sort=True,\n    **kwargs,\n)\nPlot treemap with figures in it.\nUses squarify.plot() to create a tree map then adds images to the rectangles with squarify_images. sizes and images must be in the same order so the first size goes with the first image etc.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsizes\nlist[float]\nAn iterable of numbers to convert to colours.\nrequired\n\n\nimages\nlist[PIL.PngImagePlugin.PngImageFile]\nList of PNG images.\nrequired\n\n\nletterbox\nbool\nShould the image aspect ratio be preserved? Defaults to True.\nTrue\n\n\nsort\nbool\nShould the images (and other attributes) be sorted by sizes? Improves squareness. Defaults to True.\nTrue\n\n\naspect\nstr\naspect argument passed to imshow. Defaults to “auto”.\n'auto'\n\n\n**kwargs\n\nAny additional keyword arguments are passed to squarify.plot e.g. facecolor and edgecolor. can be used to edit the rectangles behind the figures. Or labels can be added with label.\n{}",
     "crumbs": [
       "Home",
-      "Guide"
+      "figtreemap",
+      "squarify_images"
     ]
   },
   {
-    "objectID": "docs/guide.html#example-data",
-    "href": "docs/guide.html#example-data",
-    "title": "figtreemap",
-    "section": "Example data",
-    "text": "Example data\nLet’s download some example data on mammal sizes.\n\nimport requests\nfrom io import StringIO\nimport pandas as pd\n\nresponse = requests.get(\n    \"https://gist.githubusercontent.com/DAWells/95fcd46057c66aaf33dd9ca7c294c4b2/raw/c670dce7063c6aaf65085eeead5823d9cd497b0f/gestation_mass.csv\"\n)\nmammal_size = pd.read_csv(StringIO(response.text))\n\nsizes = mammal_size.adult_mass_kg\nnames = mammal_size.latin\n\nmammal_size.head()\n\n\n\n\n\n\n\n\nspecies\nlatin\ngestation_days\nadult_mass_kg\nreference for gestation period\nreference for the mass\nmammal_type\n\n\n\n\n0\nAfrican Elephant\nLoxodonta africana\n660\n4800.0\nhttps://www.msdvetmanual.com/multimedia/table/...\nhttps://thewebsiteofeverything.com/animals/mam...\nplacental\n\n\n1\nDog\nCanis familiaris\n62\n30.0\nhttps://www.msdvetmanual.com/multimedia/table/...\nhttps://a-z-animals.com/reference/average-weight/\nplacental\n\n\n2\nCat\nFelis catus\n65\n4.0\nhttps://www.msdvetmanual.com/multimedia/table/...\nhttps://www.sdhumane.org/resources/animal-size...\nplacental\n\n\n3\nHorse\nEquus ferus\n335\n450.0\nhttps://www.msdvetmanual.com/multimedia/table/...\nhttps://sizegraf.com/blog/list-of-animals-by-s...\nplacental\n\n\n4\nCow\nBos taurus\n280\n700.0\nhttps://www.msdvetmanual.com/multimedia/table/...\nhttps://a-z-animals.com/reference/average-weight/\nplacental",
+    "objectID": "docs/squarify_images.html#functions",
+    "href": "docs/squarify_images.html#functions",
+    "title": "squarify_images",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\nletterbox_extent\nCompute an extent for imshow that preserves the image’s aspect ratio\n\n\nsquarify_images\nAdd images to fit within rectangles in a plot.\n\n\nfigtreemap\nPlot treemap with figures in it.\n\n\n\n\n\nsquarify_images.letterbox_extent(extent, img)\nCompute an extent for imshow that preserves the image’s aspect ratio while fitting entirely inside the given rectangle.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nextent\ntuple[float, float, float, float]\nA tuple (xmin, xmax, ymin, ymax) defining the rectangle bounds in data coordinates.\nrequired\n\n\nimg\narray - like\nImage array shaped (H, W, C).\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlist\nA list [xmin2, xmax2, ymin2, ymax2] representing the adjusted\n\n\n\n\nextent that preserves the aspect ratio.\n\n\n\n\n\n\n\nsquarify_images.squarify_images(\n    squares,\n    images,\n    ax,\n    letterbox=True,\n    aspect='auto',\n)\nAdd images to fit within rectangles in a plot. squares and images should be iterables of the same length. Optionally preserve the image aspect ratio with letterbox=True.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsquares\nlist[matplotlib.pathces.Rectangle]\nList of rectangle objects in a plot.\nrequired\n\n\nimages\nlist[PIL.PngImagePlugin.PngImageFile]\nList of PNG images.\nrequired\n\n\nax\nmatplotlib.axes._axes.Axes\nA matplotlib axes to add the images to.\nrequired\n\n\nletterbox\nbool\nShould the image aspect ratio be preserved? Defaults to True.\nTrue\n\n\naspect\nstr\naspect argument passed to imshow. Defaults to “auto”.\n'auto'\n\n\n\n\n\n\n\nsquarify_images.figtreemap(\n    sizes,\n    images,\n    letterbox=True,\n    aspect='auto',\n    sort=True,\n    **kwargs,\n)\nPlot treemap with figures in it.\nUses squarify.plot() to create a tree map then adds images to the rectangles with squarify_images. sizes and images must be in the same order so the first size goes with the first image etc.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsizes\nlist[float]\nAn iterable of numbers to convert to colours.\nrequired\n\n\nimages\nlist[PIL.PngImagePlugin.PngImageFile]\nList of PNG images.\nrequired\n\n\nletterbox\nbool\nShould the image aspect ratio be preserved? Defaults to True.\nTrue\n\n\nsort\nbool\nShould the images (and other attributes) be sorted by sizes? Improves squareness. Defaults to True.\nTrue\n\n\naspect\nstr\naspect argument passed to imshow. Defaults to “auto”.\n'auto'\n\n\n**kwargs\n\nAny additional keyword arguments are passed to squarify.plot e.g. facecolor and edgecolor. can be used to edit the rectangles behind the figures. Or labels can be added with label.\n{}",
     "crumbs": [
       "Home",
-      "Guide"
-    ]
-  },
-  {
-    "objectID": "docs/guide.html#getting-phylopics",
-    "href": "docs/guide.html#getting-phylopics",
-    "title": "figtreemap",
-    "section": "Getting phylopics",
-    "text": "Getting phylopics\n\nsizes=sizes[:5]\nnames = names[:5]\n\nPhylopics are an amazing collection of free silhouettes of different species. We can get phylopics just from the latin name. If a phylopic is not available for our species, we take the most specific example available for the lineage.\nName look up is handled by the opentree package using the open tree of life. If you have difficulty getting the correct image, look up the name used in open tree of life.\nfigtreemap.phylopics.get_svg() will download an phylopic SVG based on a given latin name. Here we iterate over a list of names to get a list of SVGs.\n\nsvgs = [figtreemap.phylopics.get_svg(name) for name in names]\n\nThis is one of our SVGs, by default they are black but we’ll colour them based on their value below.\n\nfrom lxml import etree\nfrom IPython.display import SVG, display\ndisplay(SVG(etree.tostring(svgs[0])))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nTo avoid downloading the same images a bunch of times, it’s a good idea to save the images so that you can load them locally in future.\n\n\n\n# Save SVGs\nfor name, svg in zip(names, svgs):\n    svg.write(\n        f\"{name}.svg\",\n        encoding=\"utf-8\",\n        xml_declaration=True,\n        pretty_print=True,\n    )\n\n# Load local SVGs\nfrom lxml import etree\n\nsvgs = []\nfor name in names:\n    tree = etree.parse(f\"{name}.svg\")\n    svgs.append(tree)",
-    "crumbs": [
-      "Home",
-      "Guide"
-    ]
-  },
-  {
-    "objectID": "docs/guide.html#preparing-images",
-    "href": "docs/guide.html#preparing-images",
-    "title": "figtreemap",
-    "section": "Preparing images",
-    "text": "Preparing images\nLet’s colour our silhouettes by the size of the mammal. We use figtreemap.image_prep.size_colours() to convert numeric values into a series of colours. figtreemap.image_prep.size_colours() also takes an argument colourmap that let’s you specifiy a maplotlib colourmap or supply your own. See the sorting section for an example using categorical colours.\nfigtreemap.image_prep.prep_svg() converts our SVGs to PNGs ready for plotting but also lets us change attributes of the image like fill, and stroke. This function uses *kwargs to let you set any SVG attributes you like.\n\nhexcolours = figtreemap.image_prep.size_colours(sizes, colormap=\"plasma\")\nimgs = [\n    figtreemap.image_prep.prep_svg(svg, fill=colour, stroke=\"black\", stroke_width=\"300\")\n    for svg, colour in zip(svgs, hexcolours)\n]",
-    "crumbs": [
-      "Home",
-      "Guide"
-    ]
-  },
-  {
-    "objectID": "docs/guide.html#making-treemaps",
-    "href": "docs/guide.html#making-treemaps",
-    "title": "figtreemap",
-    "section": "Making treemaps",
-    "text": "Making treemaps\nfigtreemap.squarify_images.figtreemap() creates a treemap using squarify and adds our PNGs to the squares. It takes a list of the sizes and a list of the images, which must be in the same order.\nWe set the colours of our images above in Preparing images, but we can set the colour of the rectangles when creating the plot. figtreemap.squarify_images.figtreemap() uses *kwargs so any extra arguments are unpacked and passed to squarify.plot().\n\n\n\n\n\n\nTip\n\n\n\nSetting the rectangles to the same colour as the images but with low alpha is a nice way to make the images stand out.\n\n\n\nfigtreemap.squarify_images.figtreemap(\n    sizes,\n    imgs,\n    facecolor=hexcolours,\n    edgecolor=hexcolours,\n    alpha=0.2\n)\nplt.show()",
-    "crumbs": [
-      "Home",
-      "Guide"
-    ]
-  },
-  {
-    "objectID": "docs/guide.html#sorting",
-    "href": "docs/guide.html#sorting",
-    "title": "figtreemap",
-    "section": "Sorting",
-    "text": "Sorting\nBy default figtreemap.squarify_images.figtreemap() sorts your images so they pack to gether as squarely as possible. If you set sort=False you can have more control over the ordering of rectangles but as a result they will be less square.\nTo illustrate this let’s use the categorical colour map tab10. We convert the categories to integers using .astype(\"category\").cat.codes, and convert them to colours using figtreemap.image_prep.size_colours() as before but we set normalise to False. Storing these newly coloured images in a dataframe makes it easier to sort sizes and images together.\n\n# Generate categorical colours for mammal_type\ncategorical_colours = figtreemap.image_prep.size_colours(\n    mammal_size.mammal_type.astype(\"category\").cat.codes,\n    colormap=\"tab10\",\n    normalise=False\n)\n\nsorted_data = pd.DataFrame({\n    'name': names,\n    'size': sizes,\n    'mammal_type': mammal_size.mammal_type[:5],\n    'svg': svgs,\n    'colour': categorical_colours[:5]\n})\n\n# Convert the SVGs to PNGs with the categorical colour\nsorted_data['image'] = [\n    figtreemap.image_prep.prep_svg(svg, fill=colour, stroke=\"black\", stroke_width=\"300\")\n    for svg, colour in zip(sorted_data.svg, sorted_data.colour)\n]\n\n# Sorting the dataframe keeps the correct images and sizes paired up\nsorted_data = sorted_data.sort_values(['mammal_type','size'])\n\nBy default figtreemap.squarify_images.figtreemap() ignores the order and sorts everything by the sizes argument. This gives the optimal packing.\n\nfigtreemap.squarify_images.figtreemap(\n    sorted_data['size'],\n    sorted_data['image'],\n    facecolor=sorted_data['colour'],\n    alpha=0.2,\n    edgecolor=sorted_data['colour'],\n)\nplt.show()\n\n\n\n\n\n\n\n\nBut if you set sort=False it uses sizes and images in the order given. This may lead to less square rectangles but allows you more control on grouping.\n\nfigtreemap.squarify_images.figtreemap(\n    sorted_data['size'],\n    sorted_data['image'],\n    facecolor=sorted_data['colour'],\n    alpha=0.2,\n    edgecolor=sorted_data['colour'],\n)\nplt.show()",
-    "crumbs": [
-      "Home",
-      "Guide"
-    ]
-  },
-  {
-    "objectID": "docs/guide.html#letterbox",
-    "href": "docs/guide.html#letterbox",
-    "title": "figtreemap",
-    "section": "Letterbox",
-    "text": "Letterbox\nBy default the image is as large as it can be within it’s rectangle without changing the aspect ratio. If you set letterbox=False, the image is stretched to fill the rectangle.\n\nfigtreemap.squarify_images.figtreemap(\n    sizes,\n    imgs,\n    facecolor=hexcolours,\n    edgecolor=hexcolours,\n    alpha=0.2,\n    letterbox=False\n)\nplt.show()",
-    "crumbs": [
-      "Home",
-      "Guide"
+      "figtreemap",
+      "squarify_images"
     ]
   },
   {
@@ -167,27 +114,80 @@
     ]
   },
   {
-    "objectID": "docs/squarify_images.html",
-    "href": "docs/squarify_images.html",
-    "title": "squarify_images",
+    "objectID": "guide.html",
+    "href": "guide.html",
+    "title": "figtreemap",
     "section": "",
-    "text": "squarify_images\nPlot images in treemaps\n\n\n\n\n\nName\nDescription\n\n\n\n\nletterbox_extent\nCompute an extent for imshow that preserves the image’s aspect ratio\n\n\nsquarify_images\nAdd images to fit within rectangles in a plot.\n\n\nfigtreemap\nPlot treemap with figures in it.\n\n\n\n\n\nsquarify_images.letterbox_extent(extent, img)\nCompute an extent for imshow that preserves the image’s aspect ratio while fitting entirely inside the given rectangle.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nextent\ntuple[float, float, float, float]\nA tuple (xmin, xmax, ymin, ymax) defining the rectangle bounds in data coordinates.\nrequired\n\n\nimg\narray - like\nImage array shaped (H, W, C).\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlist\nA list [xmin2, xmax2, ymin2, ymax2] representing the adjusted\n\n\n\n\nextent that preserves the aspect ratio.\n\n\n\n\n\n\n\nsquarify_images.squarify_images(\n    squares,\n    images,\n    ax,\n    letterbox=True,\n    aspect='auto',\n)\nAdd images to fit within rectangles in a plot. squares and images should be iterables of the same length. Optionally preserve the image aspect ratio with letterbox=True.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsquares\nlist[matplotlib.pathces.Rectangle]\nList of rectangle objects in a plot.\nrequired\n\n\nimages\nlist[PIL.PngImagePlugin.PngImageFile]\nList of PNG images.\nrequired\n\n\nax\nmatplotlib.axes._axes.Axes\nA matplotlib axes to add the images to.\nrequired\n\n\nletterbox\nbool\nShould the image aspect ratio be preserved? Defaults to True.\nTrue\n\n\naspect\nstr\naspect argument passed to imshow. Defaults to “auto”.\n'auto'\n\n\n\n\n\n\n\nsquarify_images.figtreemap(\n    sizes,\n    images,\n    letterbox=True,\n    aspect='auto',\n    sort=True,\n    **kwargs,\n)\nPlot treemap with figures in it.\nUses squarify.plot() to create a tree map then adds images to the rectangles with squarify_images. sizes and images must be in the same order so the first size goes with the first image etc.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsizes\nlist[float]\nAn iterable of numbers to convert to colours.\nrequired\n\n\nimages\nlist[PIL.PngImagePlugin.PngImageFile]\nList of PNG images.\nrequired\n\n\nletterbox\nbool\nShould the image aspect ratio be preserved? Defaults to True.\nTrue\n\n\nsort\nbool\nShould the images (and other attributes) be sorted by sizes? Improves squareness. Defaults to True.\nTrue\n\n\naspect\nstr\naspect argument passed to imshow. Defaults to “auto”.\n'auto'\n\n\n**kwargs\n\nAny additional keyword arguments are passed to squarify.plot e.g. facecolor and edgecolor. can be used to edit the rectangles behind the figures. Or labels can be added with label.\n{}",
+    "text": "figtreemap lets you add pictures to treemaps.\nTreemaps plot a series of rectangles where each rectangle’s size represents a value. They are similar to bar plots but more tightly packed for comparing more categories. figtreemap adds pictures to these rectangles making it easier to tell what’s what at a glance. figtreemap focuses on adding phylopics so is especially good for plotting data about different species.\nimport matplotlib.pyplot as plt\nimport figtreemap",
     "crumbs": [
       "Home",
-      "figtreemap",
-      "squarify_images"
+      "Guide"
     ]
   },
   {
-    "objectID": "docs/squarify_images.html#functions",
-    "href": "docs/squarify_images.html#functions",
-    "title": "squarify_images",
-    "section": "",
-    "text": "Name\nDescription\n\n\n\n\nletterbox_extent\nCompute an extent for imshow that preserves the image’s aspect ratio\n\n\nsquarify_images\nAdd images to fit within rectangles in a plot.\n\n\nfigtreemap\nPlot treemap with figures in it.\n\n\n\n\n\nsquarify_images.letterbox_extent(extent, img)\nCompute an extent for imshow that preserves the image’s aspect ratio while fitting entirely inside the given rectangle.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nextent\ntuple[float, float, float, float]\nA tuple (xmin, xmax, ymin, ymax) defining the rectangle bounds in data coordinates.\nrequired\n\n\nimg\narray - like\nImage array shaped (H, W, C).\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nlist\nA list [xmin2, xmax2, ymin2, ymax2] representing the adjusted\n\n\n\n\nextent that preserves the aspect ratio.\n\n\n\n\n\n\n\nsquarify_images.squarify_images(\n    squares,\n    images,\n    ax,\n    letterbox=True,\n    aspect='auto',\n)\nAdd images to fit within rectangles in a plot. squares and images should be iterables of the same length. Optionally preserve the image aspect ratio with letterbox=True.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsquares\nlist[matplotlib.pathces.Rectangle]\nList of rectangle objects in a plot.\nrequired\n\n\nimages\nlist[PIL.PngImagePlugin.PngImageFile]\nList of PNG images.\nrequired\n\n\nax\nmatplotlib.axes._axes.Axes\nA matplotlib axes to add the images to.\nrequired\n\n\nletterbox\nbool\nShould the image aspect ratio be preserved? Defaults to True.\nTrue\n\n\naspect\nstr\naspect argument passed to imshow. Defaults to “auto”.\n'auto'\n\n\n\n\n\n\n\nsquarify_images.figtreemap(\n    sizes,\n    images,\n    letterbox=True,\n    aspect='auto',\n    sort=True,\n    **kwargs,\n)\nPlot treemap with figures in it.\nUses squarify.plot() to create a tree map then adds images to the rectangles with squarify_images. sizes and images must be in the same order so the first size goes with the first image etc.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nsizes\nlist[float]\nAn iterable of numbers to convert to colours.\nrequired\n\n\nimages\nlist[PIL.PngImagePlugin.PngImageFile]\nList of PNG images.\nrequired\n\n\nletterbox\nbool\nShould the image aspect ratio be preserved? Defaults to True.\nTrue\n\n\nsort\nbool\nShould the images (and other attributes) be sorted by sizes? Improves squareness. Defaults to True.\nTrue\n\n\naspect\nstr\naspect argument passed to imshow. Defaults to “auto”.\n'auto'\n\n\n**kwargs\n\nAny additional keyword arguments are passed to squarify.plot e.g. facecolor and edgecolor. can be used to edit the rectangles behind the figures. Or labels can be added with label.\n{}",
+    "objectID": "guide.html#example-data",
+    "href": "guide.html#example-data",
+    "title": "figtreemap",
+    "section": "Example data",
+    "text": "Example data\nLet’s download some example data on mammal sizes.\n\nimport requests\nfrom io import StringIO\nimport pandas as pd\n\nresponse = requests.get(\n    \"https://gist.githubusercontent.com/DAWells/95fcd46057c66aaf33dd9ca7c294c4b2/raw/c670dce7063c6aaf65085eeead5823d9cd497b0f/gestation_mass.csv\"\n)\nmammal_size = pd.read_csv(StringIO(response.text))\n\nsizes = mammal_size.adult_mass_kg\nnames = mammal_size.latin\n\nmammal_size.head()\n\n\n\n\n\n\n\n\nspecies\nlatin\ngestation_days\nadult_mass_kg\nreference for gestation period\nreference for the mass\nmammal_type\n\n\n\n\n0\nAfrican Elephant\nLoxodonta africana\n660\n4800.0\nhttps://www.msdvetmanual.com/multimedia/table/...\nhttps://thewebsiteofeverything.com/animals/mam...\nplacental\n\n\n1\nDog\nCanis familiaris\n62\n30.0\nhttps://www.msdvetmanual.com/multimedia/table/...\nhttps://a-z-animals.com/reference/average-weight/\nplacental\n\n\n2\nCat\nFelis catus\n65\n4.0\nhttps://www.msdvetmanual.com/multimedia/table/...\nhttps://www.sdhumane.org/resources/animal-size...\nplacental\n\n\n3\nHorse\nEquus ferus\n335\n450.0\nhttps://www.msdvetmanual.com/multimedia/table/...\nhttps://sizegraf.com/blog/list-of-animals-by-s...\nplacental\n\n\n4\nCow\nBos taurus\n280\n700.0\nhttps://www.msdvetmanual.com/multimedia/table/...\nhttps://a-z-animals.com/reference/average-weight/\nplacental",
     "crumbs": [
       "Home",
-      "figtreemap",
-      "squarify_images"
+      "Guide"
+    ]
+  },
+  {
+    "objectID": "guide.html#getting-phylopics",
+    "href": "guide.html#getting-phylopics",
+    "title": "figtreemap",
+    "section": "Getting phylopics",
+    "text": "Getting phylopics\n\nsizes=sizes[:5]\nnames = names[:5]\n\nPhylopics are an amazing collection of free silhouettes of different species. We can get phylopics just from the latin name. If a phylopic is not available for our species, we take the most specific example available for the lineage.\nName look up is handled by the opentree package using the open tree of life. If you have difficulty getting the correct image, look up the name used in open tree of life.\nfigtreemap.phylopics.get_svg() will download an phylopic SVG based on a given latin name. Here we iterate over a list of names to get a list of SVGs.\n\nsvgs = [figtreemap.phylopics.get_svg(name) for name in names]\n\nThis is one of our SVGs, by default they are black but we’ll colour them based on their value below.\n\nfrom lxml import etree\nfrom IPython.display import SVG, display\ndisplay(SVG(etree.tostring(svgs[0])))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nTo avoid downloading the same images a bunch of times, it’s a good idea to save the images so that you can load them locally in future.\n\n\n\n# Save SVGs\nfor name, svg in zip(names, svgs):\n    svg.write(\n        f\"{name}.svg\",\n        encoding=\"utf-8\",\n        xml_declaration=True,\n        pretty_print=True,\n    )\n\n# Load local SVGs\nfrom lxml import etree\n\nsvgs = []\nfor name in names:\n    tree = etree.parse(f\"{name}.svg\")\n    svgs.append(tree)",
+    "crumbs": [
+      "Home",
+      "Guide"
+    ]
+  },
+  {
+    "objectID": "guide.html#preparing-images",
+    "href": "guide.html#preparing-images",
+    "title": "figtreemap",
+    "section": "Preparing images",
+    "text": "Preparing images\nLet’s colour our silhouettes by the size of the mammal. We use figtreemap.image_prep.size_colours() to convert numeric values into a series of colours. figtreemap.image_prep.size_colours() also takes an argument colourmap that let’s you specifiy a maplotlib colourmap or supply your own. See the sorting section for an example using categorical colours.\nfigtreemap.image_prep.prep_svg() converts our SVGs to PNGs ready for plotting but also lets us change attributes of the image like fill, and stroke. This function uses *kwargs to let you set any SVG attributes you like.\n\nhexcolours = figtreemap.image_prep.size_colours(sizes, colormap=\"plasma\")\nimgs = [\n    figtreemap.image_prep.prep_svg(svg, fill=colour, stroke=\"black\", stroke_width=\"300\")\n    for svg, colour in zip(svgs, hexcolours)\n]",
+    "crumbs": [
+      "Home",
+      "Guide"
+    ]
+  },
+  {
+    "objectID": "guide.html#making-treemaps",
+    "href": "guide.html#making-treemaps",
+    "title": "figtreemap",
+    "section": "Making treemaps",
+    "text": "Making treemaps\nfigtreemap.squarify_images.figtreemap() creates a treemap using squarify and adds our PNGs to the squares. It takes a list of the sizes and a list of the images, which must be in the same order.\nWe set the colours of our images above in Preparing images, but we can set the colour of the rectangles when creating the plot. figtreemap.squarify_images.figtreemap() uses *kwargs so any extra arguments are unpacked and passed to squarify.plot().\n\n\n\n\n\n\nTip\n\n\n\nSetting the rectangles to the same colour as the images but with low alpha is a nice way to make the images stand out.\n\n\n\nfigtreemap.squarify_images.figtreemap(\n    sizes,\n    imgs,\n    facecolor=hexcolours,\n    edgecolor=hexcolours,\n    alpha=0.2\n)\nplt.show()",
+    "crumbs": [
+      "Home",
+      "Guide"
+    ]
+  },
+  {
+    "objectID": "guide.html#sorting",
+    "href": "guide.html#sorting",
+    "title": "figtreemap",
+    "section": "Sorting",
+    "text": "Sorting\nBy default figtreemap.squarify_images.figtreemap() sorts your images so they pack to gether as squarely as possible. If you set sort=False you can have more control over the ordering of rectangles but as a result they will be less square.\nTo illustrate this let’s use the categorical colour map tab10. We convert the categories to integers using .astype(\"category\").cat.codes, and convert them to colours using figtreemap.image_prep.size_colours() as before but we set normalise to False. Storing these newly coloured images in a dataframe makes it easier to sort sizes and images together.\n\n# Generate categorical colours for mammal_type\ncategorical_colours = figtreemap.image_prep.size_colours(\n    mammal_size.mammal_type.astype(\"category\").cat.codes,\n    colormap=\"tab10\",\n    normalise=False\n)\n\nsorted_data = pd.DataFrame({\n    'name': names,\n    'size': sizes,\n    'mammal_type': mammal_size.mammal_type[:5],\n    'svg': svgs,\n    'colour': categorical_colours[:5]\n})\n\n# Convert the SVGs to PNGs with the categorical colour\nsorted_data['image'] = [\n    figtreemap.image_prep.prep_svg(svg, fill=colour, stroke=\"black\", stroke_width=\"300\")\n    for svg, colour in zip(sorted_data.svg, sorted_data.colour)\n]\n\n# Sorting the dataframe keeps the correct images and sizes paired up\nsorted_data = sorted_data.sort_values(['mammal_type','size'])\n\nBy default figtreemap.squarify_images.figtreemap() ignores the order and sorts everything by the sizes argument. This gives the optimal packing.\n\nfigtreemap.squarify_images.figtreemap(\n    sorted_data['size'],\n    sorted_data['image'],\n    facecolor=sorted_data['colour'],\n    alpha=0.2,\n    edgecolor=sorted_data['colour'],\n)\nplt.show()\n\n\n\n\n\n\n\n\nBut if you set sort=False it uses sizes and images in the order given. This may lead to less square rectangles but allows you more control on grouping.\n\nfigtreemap.squarify_images.figtreemap(\n    sorted_data['size'],\n    sorted_data['image'],\n    facecolor=sorted_data['colour'],\n    alpha=0.2,\n    edgecolor=sorted_data['colour'],\n)\nplt.show()",
+    "crumbs": [
+      "Home",
+      "Guide"
+    ]
+  },
+  {
+    "objectID": "guide.html#letterbox",
+    "href": "guide.html#letterbox",
+    "title": "figtreemap",
+    "section": "Letterbox",
+    "text": "Letterbox\nBy default the image is as large as it can be within it’s rectangle without changing the aspect ratio. If you set letterbox=False, the image is stretched to fill the rectangle.\n\nfigtreemap.squarify_images.figtreemap(\n    sizes,\n    imgs,\n    facecolor=hexcolours,\n    edgecolor=hexcolours,\n    alpha=0.2,\n    letterbox=False\n)\nplt.show()",
+    "crumbs": [
+      "Home",
+      "Guide"
     ]
   }
 ]

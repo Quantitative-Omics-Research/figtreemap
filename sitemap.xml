@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://Quantitative-Omics-Research.github.io/figtreemap/docs/index.html</loc>
-    <lastmod>2026-04-09T22:46:16.838Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Quantitative-Omics-Research.github.io/figtreemap/docs/guide.html</loc>
-    <lastmod>2026-04-09T22:46:16.838Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Quantitative-Omics-Research.github.io/figtreemap/docs/image_prep.html</loc>
-    <lastmod>2026-04-09T22:47:07.634Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Quantitative-Omics-Research.github.io/figtreemap/docs/api_index.html</loc>
-    <lastmod>2026-04-09T22:47:07.578Z</lastmod>
-  </url>
-  <url>
-    <loc>https://Quantitative-Omics-Research.github.io/figtreemap/docs/phylopics.html</loc>
-    <lastmod>2026-04-09T22:47:07.615Z</lastmod>
+    <loc>https://Quantitative-Omics-Research.github.io/figtreemap/index.html</loc>
+    <lastmod>2026-04-12T18:24:53.194Z</lastmod>
   </url>
   <url>
     <loc>https://Quantitative-Omics-Research.github.io/figtreemap/docs/squarify_images.html</loc>
-    <lastmod>2026-04-09T22:47:07.651Z</lastmod>
+    <lastmod>2026-04-12T18:25:41.491Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Quantitative-Omics-Research.github.io/figtreemap/docs/image_prep.html</loc>
+    <lastmod>2026-04-12T18:25:41.473Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Quantitative-Omics-Research.github.io/figtreemap/docs/api_index.html</loc>
+    <lastmod>2026-04-12T18:25:41.418Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Quantitative-Omics-Research.github.io/figtreemap/docs/phylopics.html</loc>
+    <lastmod>2026-04-12T18:25:41.455Z</lastmod>
+  </url>
+  <url>
+    <loc>https://Quantitative-Omics-Research.github.io/figtreemap/guide.html</loc>
+    <lastmod>2026-04-12T18:24:53.194Z</lastmod>
   </url>
 </urlset>
