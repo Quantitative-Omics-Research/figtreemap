@@ -4,17 +4,7 @@
     "href": "index.html",
     "title": "Home",
     "section": "",
-    "text": "Plot treemaps with figures\nCreate treemaps with images proportional to the rectangles. This package focuses on getting and colouring phylopic SVGs but any PNG will work too.",
-    "crumbs": [
-      "Home"
-    ]
-  },
-  {
-    "objectID": "index.html#figtreemap-1",
-    "href": "index.html#figtreemap-1",
-    "title": "Home",
-    "section": "figtreemap",
-    "text": "figtreemap\nFunctions to plot treemaps with figures.\n\n\n\nphylopics\nGet most specific phylopic svg url based on open tree taxonomy name and lineage\n\n\nimage_prep\nPrepare images for treemap, simple SVG image editing and convertion to PNG\n\n\nsquarify_images\nPlot images in treemaps",
+    "text": "figtreemap\nPlot treemaps with figures\nCreate treemaps with images proportional to the rectangles. This package focuses on getting and colouring phylopic SVGs but any PNG will work too.\n\n\n🛠️ Installation\npip install figtreemap\n\n\n🚀 Quick start\n\nimport matplotlib.pyplot as plt\nimport figtreemap\n\nsizes = [30,4,450,700,190,1200,2,50,70,450,60]\nnames = [\"Canis familiaris\",\"Felis catus\",\"Equus ferus\",\"Bos taurus\",\"Panthera leo\",\"Giraffa camelopardalis\",\"Oryctolagus cuniculus\",\"Pan troglodytes\",\"Homo sapiens\",\"Ursus maritimus\",\"Orycteropus afer\"]\n\nsvgs = [figtreemap.phylopics.get_svg(name) for name in names]\nimgs = [figtreemap.image_prep.prep_svg(svg) for svg in svgs]\nfigtreemap.squarify_images.figtreemap(sizes, imgs)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n✨ Features\nPython package to plot treemaps with figures.\n\nGet phylopic SVG based on species name, if an image is not available the most specific available image for the lineage.\nPrepare images for plotting with simple SVG editing and convertion to PNG.\nPlot images in treemaps.\n\n\n\n📄 Docs\nDocs are hosted here with a step by step guide and API reference.\n\n\n🐛 Troubleshooting\nPlease highlight bugs and ask questions as github issues.\n\n\n🤝 Contributing\nPlease make requests and suggestions as github issues and if you would like to make an improvement yourself please submit a pull request.\n\n\n⚖️ Licence\nfigtreemap is distributed under MIT licence.",
     "crumbs": [
       "Home"
     ]
