@@ -24,9 +24,9 @@ plt.show()
 # ✨ Features
 Python package to plot treemaps with figures.
 
-Get phylopic SVG based on species name, if an image is not available the most specific available image for the lineage.
-Prepare images for plotting with simple SVG editing and convertion to PNG.
-Plot images in treemaps.
+- Get phylopic SVG based on species name, if an image is not available the most specific available image for the lineage.
+- Prepare images for plotting with simple SVG editing and convertion to PNG.
+- Plot images in treemaps.
 
 # 📄 Docs
 Docs are hosted [here](https://quantitative-omics-research.github.io/figtreemap/)

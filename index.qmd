@@ -3,7 +3,3 @@ title: "Home"
 ---
 
 {{< include README.md >}}
-
-
-{{< include docs/api_index.qmd >}}
-
