@@ -48,10 +48,10 @@ mammal_size.head()
 
 
 ## Getting phylopics
-```{python}
+<!-- ```{python}
 sizes=sizes[:5]
 names = names[:5]
-```
+``` -->
 
 Phylopics are an amazing collection of free silhouettes of different species.
 We can get phylopics just from the latin name. If a phylopic is not available for
