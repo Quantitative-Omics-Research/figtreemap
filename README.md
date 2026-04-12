@@ -1,5 +1,6 @@
 # figtreemap
-Plot treemaps with figures
+Plot treemaps with figures. [Source code](https://github.com/Quantitative-Omics-Research/figtreemap), [Docs](https://quantitative-omics-research.github.io/figtreemap/).
+
 
 Create treemaps with images proportional to the rectangles. This package focuses on getting and colouring [phylopic](https://www.phylopic.org/) SVGs but any PNG will work too.
 
