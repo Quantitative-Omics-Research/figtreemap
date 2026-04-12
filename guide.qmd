@@ -157,9 +157,9 @@ categorical_colours = figtreemap.image_prep.size_colours(
 sorted_data = pd.DataFrame({
     'name': names,
     'size': sizes,
-    'mammal_type': mammal_size.mammal_type[:5],
+    'mammal_type': mammal_size.mammal_type,
     'svg': svgs,
-    'colour': categorical_colours[:5]
+    'colour': categorical_colours
 })
 
 # Convert the SVGs to PNGs with the categorical colour
@@ -192,6 +192,7 @@ figtreemap.squarify_images.figtreemap(
     facecolor=sorted_data['colour'],
     alpha=0.2,
     edgecolor=sorted_data['colour'],
+    sort=False
 )
 plt.show()
 ```
